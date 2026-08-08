@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>女书 OCR Studio</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, 'Times New Roman', serif; background: #faf8f4;
+       color: #1a1a1a; min-height: 100vh; }
+
+/* ── 顶部栏 ── */
+header {
+  background: #8b1a1a; color: #fff;
+  padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+}
+header h1 { font-size: 18px; font-weight: normal; }
+header .badge {
+  font-size: 11px; background: rgba(255,255,255,.2);
+  padding: 2px 10px; border-radius: 12px; color: #ffcca0;
+}
+header .step-bar { margin-left: auto; display: flex; gap: 6px; }
+.step-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,.2); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; cursor: default;
+}
+.step-dot.active { background: #fff; color: #8b1a1a; font-weight: bold; }
+.step-dot.done   { background: #4caf50; }
+
+/* ── 步骤容器 ── */
+.step { display: none; padding: 24px; max-width: 1200px; margin: 0 auto; }
+.step.active { display: block; }
+.step-title {
+  font-size: 16px; color: #8b1a1a; margin-bottom: 20px;
+  padding-bottom: 8px; border-bottom: 1px solid #e0d8cc;
+}
+
+/* ── 按钮 ── */
+.btn {
+  display: inline-block; padding: 8px 20px; border: none;
+  border-radius: 5px; cursor: pointer; font-size: 14px;
+  font-family: inherit;
+}
+.btn-primary  { background: #8b1a1a; color: #fff; }
+.btn-primary:hover { background: #6d1515; }
+.btn-secondary{ background: #e8e2d8; color: #333; }
+.btn-secondary:hover { background: #d5cdc0; }
+.btn-green    { background: #2e7d32; color: #fff; }
+.btn-green:hover { background: #1b5e20; }
+.btn-blue     { background: #2c4a7c; color: #fff; }
+.btn-blue:hover { background: #1e3560; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-row { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;
+           align-items: center; }
+
+/* ── Step 1: 上传 ── */
+.upload-zone {
+  border: 2px dashed #c9a96e; border-radius: 10px;
+  padding: 60px 40px; text-align: center; background: #fff;
+  cursor: pointer; transition: border-color .2s; max-width: 600px;
+}
+.upload-zone:hover { border-color: #8b1a1a; }
+.upload-zone .label { font-size: 18px; font-weight: bold; color: #8b1a1a; }
+.upload-zone .hint  { font-size: 13px; color: #888; margin-top: 6px; }
+#preview-img { max-width: 100%; max-height: 300px; border-radius: 6px;
+               border: 1px solid #e0d8cc; margin-top: 16px; display: none; }
+
+/* ── Step 2: 检测纠错 ── */
+.detect-layout { display: grid; grid-template-columns: 1fr 220px; gap: 20px; }
+.canvas-wrap { position: relative; overflow: auto; border: 1px solid #e0d8cc;
+               border-radius: 6px; background: #111; cursor: crosshair; }
+#detect-canvas { display: block; }
+.detect-controls { background: #fff; border: 1px solid #e0d8cc;
+                   border-radius: 6px; padding: 16px; }
+.detect-controls h3 { font-size: 13px; color: #8b1a1a; margin-bottom: 12px; }
+.slider-row { margin-bottom: 12px; }
+.slider-row label { font-size: 12px; color: #555; display: block; margin-bottom: 4px; }
+.slider-row input { width: 100%; }
+.box-count { font-size: 13px; color: #444; margin: 10px 0;
+             padding: 8px; background: #f8f4ef; border-radius: 4px; }
+.detect-tip { font-size: 11px; color: #888; margin-top: 10px; line-height: 1.6; }
+
+/* ── Step 3: 识别结果 ── */
+.char-cards { display: flex; flex-direction: column; gap: 16px; }
+.char-card {
+  background: #fff; border: 2px solid #e0d8cc; border-radius: 8px;
+  padding: 16px; display: grid;
+  grid-template-columns: 80px 1fr; gap: 16px; align-items: start;
+}
+.char-card.confirmed { border-color: #4caf50; }
+.char-card.unconfirmed { border-color: #f9a825; }
+.char-preview { width: 72px; height: 72px; border: 1px solid #ddd;
+                border-radius: 4px; object-fit: contain; background: #fff;
+                image-rendering: pixelated; }
+.char-num { font-size: 11px; color: #888; text-align: center; margin-top: 4px; }
+.candidates { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.cand {
+  width: 70px; border: 2px solid #e0d8cc; border-radius: 6px;
+  padding: 6px 4px; text-align: center; cursor: pointer;
+  background: #fdf8f0; transition: border-color .15s, background .15s;
+}
+.cand:hover { border-color: #c9a96e; background: #f5edd8; }
+.cand.selected { border-color: #4caf50; background: #e8f5e9; }
+.cand .glyph  { font-size: 28px; line-height: 1.2; display: block; }
+.cand .uid    { font-size: 9px; color: #888; font-family: monospace; }
+.cand .conf   { font-size: 10px; color: #555; }
+.cand .hw-mark{ font-size: 9px; color: #4caf50; }
+
+/* ── 形近字悬浮窗 ── */
+#lookalike-popup {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  background: #1e1e1e;
+  border: 1px solid #c9a96e;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.5);
+  max-width: 320px;
+}
+#lookalike-popup .lk-title {
+  font-size: 11px; color: #c9a96e; margin-bottom: 6px;
+  padding-bottom: 4px; border-bottom: 1px solid #333;
+}
+#lookalike-popup .lk-grid {
+  display: flex; flex-wrap: wrap; gap: 5px;
+}
+.lk-cell {
+  width: 58px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: #2a2a2a; border-radius: 5px; cursor: pointer;
+  border: 2px solid transparent; padding: 4px 2px;
+  transition: border-color .12s;
+}
+.lk-cell:hover  { border-color: #c9a96e; background: #333; }
+.lk-cell.lk-current { border-color: #4caf50; background: #1a2a1a; }
+.lk-cell .lk-glyph { font-size: 32px; color: #fff; line-height: 1.2; }
+.lk-cell .lk-uid   { font-size: 8px; color: #888; font-family: monospace; }
+.lk-cell .lk-hanzi { font-size: 10px; color: #c9a96e; margin-top: 1px; }
+.btn-open-dict {
+  border: 2px dashed #c9a96e; border-radius: 6px;
+  padding: 6px 8px; font-size: 12px; color: #8b1a1a;
+  background: #fff; cursor: pointer; white-space: nowrap;
+}
+.btn-open-dict:hover { background: #fdf0e0; }
+/* 从字库选中字符后按钮变成展示框 */
+.btn-open-dict.dict-chosen {
+  border: 2px solid #4caf50; background: #e8f5e9;
+  color: #1b5e20; font-size: 22px; padding: 4px 10px;
+  font-weight: bold; cursor: pointer;
+}
+.confirm-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; background: #f0f8f0; border-radius: 5px;
+  font-size: 13px; display: none;
+}
+.confirm-row .confirmed-char { font-size: 24px; }
+.confirm-row .translation { color: #555; }
+.confirm-row .hanzi { color: #8b1a1a; font-size: 15px; }
+
+/* 汉字候选按钮 */
+.hanzi-btn {
+  font-size: 16px; padding: 2px 6px; margin: 1px;
+  border: 1px solid #e0d8cc; border-radius: 3px;
+  background: #f8f4ef; cursor: pointer; color: #333;
+}
+.hanzi-btn:hover { background: #f0e8d8; border-color: #c9a96e; }
+.hanzi-btn.hanzi-selected { background: #8b1a1a; color: #fff; border-color: #8b1a1a; }
+
+/* ── Step 4: 导出 ── */
+.result-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.result-table th {
+  background: #8b1a1a; color: #fff; padding: 8px 12px; text-align: left;
+  font-weight: normal;
+}
+.result-table td { padding: 8px 12px; border-bottom: 1px solid #e8e2d8; }
+.result-table tr:nth-child(even) td { background: #f8f4ef; }
+.corrected-mark { color: #e65100; font-size: 11px; }
+.final-text {
+  font-size: 28px; letter-spacing: 4px; padding: 16px 20px;
+  background: #fff; border: 1px solid #e0d8cc; border-radius: 6px;
+  margin-bottom: 4px; word-break: break-all;
+}
+.final-hanzi {
+  font-size: 22px; letter-spacing: 4px; padding: 14px 20px;
+  background: #f0f4ff; border: 1px solid #b0c4e8; border-radius: 6px;
+  margin-bottom: 20px; word-break: break-all; color: #2c4a7c;
+}
+
+/* ── 字库浮层 ── */
+#dict-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.5); z-index: 1000;
+  align-items: center; justify-content: center;
+}
+#dict-overlay.open { display: flex; }
+.dict-panel {
+  background: #1e1e1e; border-radius: 10px; overflow: hidden;
+  width: 600px; max-height: 88vh; display: flex; flex-direction: column;
+  box-shadow: 0 8px 40px rgba(0,0,0,.4);
+}
+.dict-panel header {
+  background: #2a2a2a; padding: 10px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: #eee;
+}
+.dict-close { background: none; border: none; color: #aaa;
+              font-size: 18px; cursor: pointer; line-height: 1; }
+.dict-close:hover { color: #fff; }
+#dict-group-bar {
+  display: flex; flex-wrap: wrap; gap: 3px; padding: 6px;
+  border-bottom: 1px solid #333; max-height: 80px; overflow-y: auto;
+}
+.dict-group-btn {
+  font-size: 10px; font-family: monospace; background: #2a2a2a;
+  color: #aaa; border: 1px solid #444; border-radius: 3px;
+  padding: 2px 6px; cursor: pointer;
+}
+.dict-group-btn.active { background: #8b1a1a; color: #fff; border-color: #8b1a1a; }
+#dict-nav {
+  display: flex; align-items: center; border-bottom: 1px solid #2a2a2a;
+}
+.dict-arrow {
+  background: #2a2a2a; color: #c9a96e; border: none; cursor: pointer;
+  font-size: 16px; padding: 6px 12px;
+}
+.dict-arrow:hover { background: #8b1a1a; color: #fff; }
+#dict-group-title {
+  flex: 1; text-align: center; font-size: 11px; color: #c9a96e;
+  font-family: monospace; padding: 4px;
+}
+#dict-char-grid {
+  flex: 1; overflow-y: auto; display: grid;
+  grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 10px;
+}
+.dict-cell {
+  aspect-ratio: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: #2a2a2a; border-radius: 5px; cursor: pointer;
+  border: 2px solid transparent; font-size: 34px; color: #fff;
+}
+.dict-cell:hover  { border-color: #c9a96e; background: #333; }
+.dict-cell .d-uid { font-size: 8px; color: #888; font-family: monospace; margin-top: 2px; }
+
+/* ── 加载动画 ── */
+.spinner {
+  display: inline-block; width: 16px; height: 16px;
+  border: 2px solid #ccc; border-top-color: #8b1a1a;
+  border-radius: 50%; animation: spin .8s linear infinite;
+  vertical-align: middle; margin-right: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#status-bar {
+  padding: 6px 24px; font-size: 12px; color: #888;
+  background: #f0ebe4; border-top: 1px solid #e0d8cc;
+  min-height: 28px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="ui-title">NüshuSight OCR Studio</h1>
+  <span class="badge">Model: Oneshot v2</span>
+  <div class="step-bar">
+    <div class="step-dot active" id="dot-1" title="上传图片">1</div>
+    <div class="step-dot" id="dot-2" title="检测纠错">2</div>
+    <div class="step-dot" id="dot-3" title="识别确认">3</div>
+    <div class="step-dot" id="dot-4" title="导出结果">4</div>
+    <!-- 语言切换按钮 Language switch -->
+    <button id="lang-btn" onclick="toggleLang()"
+            style="margin-left:16px;background:rgba(255,255,255,0.15);
+                   border:1px solid rgba(255,255,255,0.4);color:#fff;
+                   border-radius:4px;padding:4px 12px;cursor:pointer;
+                   font-size:13px;font-family:Georgia,serif;">
+      EN
+    </button>
+  </div>
+</header>
+
+<!-- ══ Step 1: 上传 ══════════════════════════════════════════════════════════ -->
+<div class="step active" id="step-1">
+  <div class="step-title">第一步：上传手写女书图片</div>
+  <div class="upload-zone" id="drop-zone"
+       onclick="document.getElementById('file-inp').click()">
+    <div class="label">点击上传或拖放图片</div>
+    <div class="hint">支持 JPG / PNG · 建议白底黑字扫描件</div>
+    <input type="file" id="file-inp" accept="image/*" style="display:none"
+           onchange="onFileSelect(event)">
+  </div>
+  <img id="preview-img" src="" alt="preview">
+  <div class="btn-row">
+    <button class="btn btn-primary" id="btn-to-detect" onclick="goDetect()" disabled>
+      下一步：检测字符位置 →
+    </button>
+  </div>
+</div>
+
+<!-- ══ Step 2: 检测纠错 ══════════════════════════════════════════════════════ -->
+<div class="step" id="step-2">
+  <div class="step-title">第二步：确认字符检测框（可人工调整）</div>
+  <div class="detect-layout">
+    <div class="canvas-wrap" id="canvas-wrap">
+      <canvas id="detect-canvas"></canvas>
+    </div>
+    <div class="detect-controls">
+      <h3 data-i18n="detParams">检测参数</h3>
+      <div class="slider-row">
+        <label><span data-i18n="minSize">最小字符尺寸</span>: <span id="min-size-val">20</span>px</label>
+        <input type="range" min="5" max="100" value="20" id="min-size"
+               oninput="document.getElementById('min-size-val').textContent=this.value">
+      </div>
+      <div class="slider-row">
+        <label><span data-i18n="maxSize">最大字符尺寸</span>: <span id="max-size-val">500</span>px</label>
+        <input type="range" min="50" max="1000" value="500" id="max-size"
+               oninput="document.getElementById('max-size-val').textContent=this.value">
+      </div>
+      <div class="slider-row">
+        <label><span data-i18n="colThresh">列分组宽松度</span>: <span id="col-threshold-val">0.6</span>
+          <span data-i18n="colHint" style="font-size:10px;color:#888;">（倾斜书写调大）</span>
+        </label>
+        <input type="range" min="0.3" max="1.5" step="0.1" value="0.6" id="col-threshold"
+               oninput="document.getElementById('col-threshold-val').textContent=parseFloat(this.value).toFixed(1); renumberBoxes()">
+      </div>
+      <button class="btn btn-secondary" onclick="runDetect()" style="width:100%;margin-bottom:6px;" data-i18n="redetect">
+        🔄 重新自动检测
+      </button>
+      <button class="btn btn-secondary" onclick="clearAllBoxes()" style="width:100%;background:#5d4037;color:#fff;" data-i18n="clear">
+        🗑 清空所有框（手动模式）
+      </button>
+      <div class="box-count" id="box-count" data-i18n-prefix="boxCount">检测到 0 个字符</div>
+      <div class="detect-tip">
+        <b data-i18n="tipTitle">操作提示：</b><br>
+        <span data-i18n="tip1">• 拖动框：移动位置</span><br>
+        <span data-i18n="tip2">• 拖动角点：调整大小</span><br>
+        <span data-i18n="tip3">• 双击：删除框</span><br>
+        <span data-i18n="tip4">• Shift+拖拽：新增框</span>
+      </div>
+      <div class="btn-row" style="margin-top:16px; flex-direction:column; gap:8px;">
+        <button class="btn btn-secondary" onclick="goStep(1)" style="width:100%" data-i18n="backDet">← 返回上传</button>
+        <div id="btn-back-to-detect" style="display:none;background:#fff3cd;color:#856404;border:1px solid #ffc107;border-radius:6px;padding:8px 12px;font-size:12px;text-align:center;">
+          <span data-i18n="resumeHint">📌 已从识别步骤返回，可继续调整检测框</span>
+        </div>
+        <button class="btn btn-secondary" onclick="saveBoxLayout()"
+                style="width:100%;background:#2c4a7c;color:#fff;" data-i18n="saveBox"
+                title="保存当前框位置，下次打开同一文件时可快速加载">
+          💾 保存框位置记录
+        </button>
+        <button class="btn btn-primary" id="btn-to-recog" onclick="goRecognize()"
+                style="width:100%" disabled>
+          确认框位置，开始识别 →
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Step 3: 识别确认 ══════════════════════════════════════════════════════ -->
+<div class="step" id="step-3">
+  <div class="step-title">第三步：确认识别结果（点击候选字符确认，或查字库）</div>
+  <div class="char-cards" id="char-cards"></div>
+  <div class="btn-row" style="margin-top:20px;">
+    <button class="btn btn-secondary" onclick="saveProgressAndGoBack()" data-i18n="saveBack">↩ 保存进度，返回调整框</button>
+    <button class="btn btn-green" id="btn-to-export" onclick="goExport()" data-i18n="exportResult">
+      完成，导出结果 →
+    </button>
+  </div>
+</div>
+
+<!-- ══ Step 4: 导出 ══════════════════════════════════════════════════════════ -->
+<div class="step" id="step-4">
+  <div class="step-title">第四步：识别结果与导出</div>
+
+  <!-- 女书原文 -->
+  <div style="font-size:11px;color:#8b1a1a;letter-spacing:1px;margin-bottom:4px;"
+       data-i18n="finalLabel">
+    女书原文
+  </div>
+  <div class="final-text" id="final-text"></div>
+
+  <!-- 汉字对照 -->
+  <div style="font-size:11px;color:#2c4a7c;letter-spacing:1px;margin:12px 0 4px;"
+       data-i18n="hanziLabel">
+    汉字对照
+  </div>
+  <div class="final-hanzi" id="final-hanzi"></div>
+  <table class="result-table" id="result-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th data-i18n="thImg">字符图</th>
+        <th data-i18n="thNushu">女书</th>
+        <th>Unicode</th>
+        <th data-i18n="thHanzi">对应汉字</th>
+        <th data-i18n="thPinyin">发音</th>
+        <th data-i18n="thSource">来源</th>
+      </tr>
+    </thead>
+    <tbody id="result-tbody"></tbody>
+  </table>
+  <div class="btn-row" style="margin-top:20px;">
+    <button class="btn btn-secondary" onclick="goStep(3)" data-i18n="backBtn">← 返回修改</button>
+    <button class="btn btn-blue" onclick="exportCorrections()" data-i18n="exportBtn">
+      💾 导出纠错数据（用于训练）
+    </button>
+    <button class="btn btn-green" onclick="exportCSV()" data-i18n="csvBtn">
+      📊 导出 CSV 结果
+    </button>
+    <button class="btn btn-primary" onclick="newSession()" data-i18n="newBtn">
+      开始新图片
+    </button>
+  </div>
+</div>
+
+<!-- ══ 字库浮层 ══════════════════════════════════════════════════════════════ -->
+<div id="dict-overlay">
+  <div class="dict-panel">
+    <header>
+      <span data-i18n="dictTitle">字库选择</span>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button onclick="openPuaManagerFromDict()"
+                style="font-size:11px;background:#2c4a7c;color:#fff;
+                       border:none;border-radius:3px;padding:3px 8px;cursor:pointer;"
+                data-i18n="dictPua">
+          ＋ PUA 扩展字符
+        </button>
+        <button class="dict-close" onclick="closeDict()">✕</button>
+      </div>
+    </header>
+    <div id="dict-group-bar"></div>
+    <div id="dict-nav">
+      <button class="dict-arrow" onclick="dictPrevGroup()">←</button>
+      <span id="dict-group-title">—</span>
+      <button class="dict-arrow" onclick="dictNextGroup()">→</button>
+    </div>
+    <div id="dict-char-grid"></div>
+  </div>
+</div>
+
+<!-- ══ PUA 管理浮层 ══════════════════════════════════════════════════════════ -->
+<div id="pua-overlay" style="display:none;position:fixed;inset:0;
+     background:rgba(0,0,0,.6);z-index:1100;align-items:center;justify-content:center;">
+  <div style="background:#1e1e1e;border-radius:10px;width:580px;max-height:85vh;
+              display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.5);">
+    <div style="background:#2a2a2a;padding:12px 16px;display:flex;
+                align-items:center;justify-content:space-between;border-radius:10px 10px 0 0;">
+      <span style="color:#eee;font-size:14px;" id="pua-title">PUA 扩展字符管理 &nbsp;
+        <span style="font-size:11px;color:#c9a96e;">码位 U+1B300 起</span>
+      </span>
+      <button onclick="closePuaManager()"
+              style="background:none;border:none;color:#aaa;font-size:18px;cursor:pointer;">✕</button>
+    </div>
+
+    <!-- 新增表单 -->
+    <div style="padding:14px 16px;border-bottom:1px solid #333;">
+      <div id="pua-add-title" style="font-size:12px;color:#c9a96e;margin-bottom:8px;">新增 PUA 字符</div>
+      <!-- 截图预览 -->
+      <div id="pua-crop-preview" style="display:none;margin-bottom:10px;
+           background:#2a2a2a;border:1px solid #444;border-radius:6px;
+           padding:10px;display:flex;align-items:center;gap:12px;">
+        <img id="pua-crop-img" style="width:56px;height:56px;image-rendering:pixelated;
+             border:1px solid #555;border-radius:4px;">
+        <div style="color:#aaa;font-size:12px;" id="pua-crop-hint"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+        <input id="pua-source" placeholder="来源文献（如：YuXiu手稿）"
+               style="padding:6px 8px;background:#2a2a2a;border:1px solid #444;
+                      border-radius:4px;color:#eee;font-size:12px;">
+        <input id="pua-hanzi"  placeholder="对应汉字（若有）"
+               style="padding:6px 8px;background:#2a2a2a;border:1px solid #444;
+                      border-radius:4px;color:#eee;font-size:12px;">
+        <input id="pua-note"   placeholder="备注"
+               style="padding:6px 8px;background:#2a2a2a;border:1px solid #444;
+                      border-radius:4px;color:#eee;font-size:12px;grid-column:1/-1;">
+      </div>
+      <button id="pua-add-btn" onclick="addPuaChar()"
+              style="background:#8b1a1a;color:#fff;border:none;padding:6px 18px;
+                     border-radius:4px;cursor:pointer;font-size:13px;">
+        ＋ 分配新码位并登记
+      </button>
+      <span id="pua-add-result" style="font-size:12px;color:#4caf50;margin-left:10px;"></span>
+    </div>
+
+    <!-- 已登记列表 -->
+    <div style="flex:1;overflow-y:auto;padding:10px 16px;">
+      <div style="font-size:12px;color:#888;margin-bottom:8px;">
+        <span id="pua-list-title">已登记 PUA 字符</span>
+        &nbsp;<span id="pua-count" style="color:#c9a96e;"></span>
+      </div>
+      <div id="pua-list" style="display:flex;flex-direction:column;gap:6px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 形近字悬浮窗 ══════════════════════════════════════════════════════════ -->
+<div id="lookalike-popup">
+  <div class="lk-title">形近字组 — 点击选定</div>
+  <div class="lk-grid" id="lookalike-grid"></div>
+</div>
+
+<div id="status-bar"></div>
+
+<script>
+// ── 全局状态 ──────────────────────────────────────────────────────────────────
+let selectedFile   = null;
+let imgFilename    = '';
+let imgNaturalW    = 0, imgNaturalH = 0;
+let canvasScale    = 1.0;
+let boxes          = [];      // [{n,x,y,w,h}] 原图坐标
+let charResults    = [];      // [{n,bbox,crop_b64,predictions,confirmed:{uid,char,hanzi,pinyin}}]
+let allChars       = [];      // 400 个女书字符
+let dictGroupList  = [];
+let dictCurGroup   = '';
+let dictTargetCard = null;    // 当前为哪个字符卡片选字
+
+// ── 初始化 ────────────────────────────────────────────────────────────────────
+async function init() {
+  await loadCharDict();
+  // 预加载 PUA 字库
+  try {
+    const resp = await fetch('/pua');
+    const data = await resp.json();
+    puaChars = data.chars || {};
+  } catch {}
+  buildDictGroupBar();
+}
+
+async function loadCharDict() {
+  try {
+    const r = await fetch('./nushu_chars.json');
+    allChars = await r.json();
+  } catch {
+    allChars = [];
+    for (let cp = 0x1B170; cp <= 0x1B2FF; cp++) {
+      const c = String.fromCodePoint(cp);
+      allChars.push({ char: c,
+        unicode: `U+${cp.toString(16).toUpperCase().padStart(5,'0')}`,
+        uid: `U${cp.toString(16).toUpperCase().padStart(5,'0')}` });
+    }
+  }
+}
+
+// ── Step 导航 ─────────────────────────────────────────────────────────────────
+function goStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(`step-${n}`).classList.add('active');
+  document.querySelectorAll('.step-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 < n)  d.classList.add('done');
+    if (i + 1 === n) d.classList.add('active');
+  });
+  setStatus('');
+}
+
+// ── Step 1: 上传 ──────────────────────────────────────────────────────────────
+function onFileSelect(e) {
+  selectedFile = e.target.files[0];
+  if (!selectedFile) return;
+  imgFilename = selectedFile.name;
+  const url   = URL.createObjectURL(selectedFile);
+  const img   = document.getElementById('preview-img');
+  img.onload  = () => {
+    imgNaturalW = img.naturalWidth;
+    imgNaturalH = img.naturalHeight;
+  };
+  img.src = url;
+  img.style.display = 'block';
+  document.getElementById('btn-to-detect').disabled = false;
+  setStatus(`已加载: ${imgFilename} (${imgNaturalW}×${imgNaturalH}px)`);
+}
+
+// 拖放支持
+const dz = document.getElementById('drop-zone');
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.style.borderColor='#8b1a1a'; });
+dz.addEventListener('dragleave', () => { dz.style.borderColor='#c9a96e'; });
+dz.addEventListener('drop', e => {
+  e.preventDefault(); dz.style.borderColor='#c9a96e';
+  selectedFile = e.dataTransfer.files[0];
+  if (!selectedFile) return;
+  imgFilename = selectedFile.name;
+  const url = URL.createObjectURL(selectedFile);
+  const img = document.getElementById('preview-img');
+  img.src = url; img.style.display = 'block';
+  document.getElementById('btn-to-detect').disabled = false;
+});
+
+async function goDetect() {
+  goStep(2);
+  // 先初始化画布（必须在检查历史记录前完成）
+  await initCanvas();
+  // 检查是否有已保存的框位置记录
+  const loaded = await checkAndOfferBoxLayout();
+  if (!loaded) {
+    // 没有历史记录，或用户选择不加载，则自动检测
+    await runDetect();
+  } else {
+    renderCanvas();
+  }
+}
+
+// ── Step 2: 检测 ──────────────────────────────────────────────────────────────
+const canvas = document.getElementById('detect-canvas');
+const ctx    = canvas.getContext('2d');
+let bgImage  = null;
+let dragging = null;    // {type:'move'|'resize', box, startX, startY, origBox}
+let shiftDrawing = false;
+let shiftStart   = {x:0,y:0};
+let shiftCurrent = {x:0,y:0};
+
+async function runDetect() {
+  setStatus('<span class="spinner"></span>自动检测字符中...');
+  const fd = new FormData();
+  fd.append('image', selectedFile);
+  fd.append('min_size', document.getElementById('min-size').value);
+  fd.append('max_size', document.getElementById('max-size').value);
+  fd.append('col_threshold', document.getElementById('col-threshold').value);
+  try {
+    const resp = await fetch('/detect', {method:'POST', body:fd});
+    const data = await resp.json();
+    if (data.error) { setStatus('检测失败: '+data.error); return; }
+    boxes = data.boxes;
+    document.getElementById('box-count').textContent =
+      `检测到 ${boxes.length} 个字符`;
+    document.getElementById('btn-to-recog').disabled = boxes.length === 0;
+    // 只在画布未初始化时才初始化（goDetect 可能已提前初始化）
+    if (!bgImage) await initCanvas();
+    renderCanvas();
+    setStatus(`检测完成：${boxes.length} 个框`);
+  } catch(e) { setStatus('请求失败: '+e.message); }
+}
+
+async function initCanvas() {
+  return new Promise(resolve => {
+    const url = URL.createObjectURL(selectedFile);
+    bgImage   = new Image();
+    bgImage.onload = () => {
+      const wrap = document.getElementById('canvas-wrap');
+      const maxW = wrap.parentElement.clientWidth - 260;
+      canvasScale = Math.min(1.0, maxW / bgImage.width);
+      canvas.width  = Math.round(bgImage.width  * canvasScale);
+      canvas.height = Math.round(bgImage.height * canvasScale);
+      resolve();
+    };
+    bgImage.src = url;
+  });
+}
+
+// 获取框的四个实际顶点（含自定义偏移）
+// pts: [{dx,dy}, {dx,dy}, {dx,dy}, {dx,dy}] 对应 TL/TR/BR/BL 的偏移
+function getCornerPts(b) {
+  const p = b.pts || [{dx:0,dy:0},{dx:0,dy:0},{dx:0,dy:0},{dx:0,dy:0}];
+  return [
+    {x: b.x       + p[0].dx, y: b.y       + p[0].dy},  // TL
+    {x: b.x+b.w   + p[1].dx, y: b.y       + p[1].dy},  // TR
+    {x: b.x+b.w   + p[2].dx, y: b.y+b.h   + p[2].dy},  // BR
+    {x: b.x       + p[3].dx, y: b.y+b.h   + p[3].dy},  // BL
+  ];
+}
+
+function renderCanvas() {
+  if (!bgImage) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+  boxes.forEach(b => {
+    const pts = getCornerPts(b);
+    // 画四边形
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x*canvasScale, pts[0].y*canvasScale);
+    for (let i=1; i<4; i++) ctx.lineTo(pts[i].x*canvasScale, pts[i].y*canvasScale);
+    ctx.closePath();
+    ctx.strokeStyle = '#e53935'; ctx.lineWidth = 1.8;
+    ctx.stroke();
+    // 四个可拖动角点（圆点）
+    pts.forEach(pt => {
+      ctx.fillStyle = '#e53935';
+      ctx.beginPath();
+      ctx.arc(pt.x*canvasScale, pt.y*canvasScale, 5, 0, Math.PI*2);
+      ctx.fill();
+    });
+    // 编号
+    const fontSize = Math.max(11, 13 * canvasScale);
+    ctx.font = `bold ${fontSize}px monospace`;
+    ctx.fillStyle = '#c62828';
+    ctx.fillText(String(b.n), pts[0].x*canvasScale + 3, pts[0].y*canvasScale + fontSize + 1);
+  });
+  if (shiftDrawing) {
+    const x = Math.min(shiftStart.x, shiftCurrent.x)*canvasScale;
+    const y = Math.min(shiftStart.y, shiftCurrent.y)*canvasScale;
+    const w = Math.abs(shiftCurrent.x-shiftStart.x)*canvasScale;
+    const h = Math.abs(shiftCurrent.y-shiftStart.y)*canvasScale;
+    ctx.strokeStyle = '#4caf50'; ctx.lineWidth = 1.5;
+    ctx.setLineDash([4,3]); ctx.strokeRect(x,y,w,h); ctx.setLineDash([]);
+  }
+}
+
+function canvasXY(e) {
+  const r = canvas.getBoundingClientRect();
+  return {
+    cx: e.clientX-r.left, cy: e.clientY-r.top,
+    ix: (e.clientX-r.left)/canvasScale,
+    iy: (e.clientY-r.top)/canvasScale,
+  };
+}
+
+function hitCorner(b, ix, iy) {
+  const pts = getCornerPts(b);
+  for (let i=0; i<pts.length; i++) {
+    if (Math.abs(ix-pts[i].x)<10/canvasScale && Math.abs(iy-pts[i].y)<10/canvasScale)
+      return i;   // 返回顶点索引 0~3
+  }
+  return -1;
+}
+
+function hitBox(ix, iy) {
+  // 用射线法判断点是否在任意四边形内
+  for (let i=boxes.length-1; i>=0; i--) {
+    const pts = getCornerPts(boxes[i]);
+    let inside = false;
+    for (let j=0, k=pts.length-1; j<pts.length; k=j++) {
+      const xi=pts[j].x, yi=pts[j].y, xk=pts[k].x, yk=pts[k].y;
+      if (((yi>iy)!==(yk>iy)) && ix < (xk-xi)*(iy-yi)/(yk-yi)+xi)
+        inside = !inside;
+    }
+    if (inside) return i;
+  }
+  return -1;
+}
+
+canvas.addEventListener('dblclick', e => {
+  const p = canvasXY(e);
+  const i = hitBox(p.ix, p.iy);
+  if (i>=0) { boxes.splice(i,1); renumberBoxes(); renderCanvas(); updateBoxCount(); }
+});
+
+canvas.addEventListener('mousedown', e => {
+  const p = canvasXY(e);
+  if (e.shiftKey) {
+    shiftDrawing = true; shiftStart = {x:p.ix, y:p.iy}; shiftCurrent = {...shiftStart};
+    return;
+  }
+  // 检查角点（优先）
+  for (const b of boxes) {
+    const ci = hitCorner(b, p.ix, p.iy);
+    if (ci >= 0) {
+      if (!b.pts) b.pts = [{dx:0,dy:0},{dx:0,dy:0},{dx:0,dy:0},{dx:0,dy:0}];
+      dragging = {type:'corner', box:b, cornerIdx:ci,
+                  origPt:{...b.pts[ci]}, startX:p.ix, startY:p.iy};
+      return;
+    }
+  }
+  // 检查框体（移动整体）
+  const i = hitBox(p.ix, p.iy);
+  if (i>=0) {
+    dragging = {type:'move', box:boxes[i], startX:p.ix, startY:p.iy,
+                origBox:{x:boxes[i].x, y:boxes[i].y,
+                         pts: boxes[i].pts ? boxes[i].pts.map(p=>({...p})) : null}};
+  }
+});
+
+canvas.addEventListener('mousemove', e => {
+  const p = canvasXY(e);
+  if (shiftDrawing) { shiftCurrent = {x:p.ix, y:p.iy}; renderCanvas(); return; }
+  if (!dragging) return;
+  const dx = p.ix - dragging.startX, dy = p.iy - dragging.startY;
+  const b = dragging.box;
+  if (dragging.type === 'move') {
+    b.x = dragging.origBox.x + dx;
+    b.y = dragging.origBox.y + dy;
+    // pts 偏移不变，整体跟着 x/y 移动
+  } else if (dragging.type === 'corner') {
+    if (!b.pts) b.pts = [{dx:0,dy:0},{dx:0,dy:0},{dx:0,dy:0},{dx:0,dy:0}];
+    b.pts[dragging.cornerIdx].dx = dragging.origPt.dx + dx;
+    b.pts[dragging.cornerIdx].dy = dragging.origPt.dy + dy;
+  }
+  renderCanvas();
+});
+
+canvas.addEventListener('mouseup', e => {
+  const p = canvasXY(e);
+  if (shiftDrawing) {
+    shiftDrawing = false;
+    const x = Math.min(shiftStart.x, p.ix), y = Math.min(shiftStart.y, p.iy);
+    const w = Math.abs(p.ix-shiftStart.x), h = Math.abs(p.iy-shiftStart.y);
+    if (w>10 && h>10) {
+      boxes.push({n:0, x:Math.round(x), y:Math.round(y),
+                  w:Math.round(w), h:Math.round(h)});
+      renumberBoxes(); renderCanvas(); updateBoxCount();
+    }
+  }
+  dragging = null;
+});
+
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  canvasScale = Math.max(0.1, Math.min(3, canvasScale+(e.deltaY<0?.1:-.1)));
+  canvas.width  = Math.round(bgImage.width  * canvasScale);
+  canvas.height = Math.round(bgImage.height * canvasScale);
+  renderCanvas();
+}, {passive:false});
+
+
+function renumberBoxes() {
+  // 女书阅读顺序：列从右到左，列内从上到下
+  if (!boxes.length) return;
+
+  // 读取用户设置的列分组宽松度（默认 0.6）
+  const colThreshold = parseFloat(
+    document.getElementById('col-threshold')?.value || '0.6'
+  );
+
+  // 先按 x 中心从大到小排序（右→左）
+  const sorted = [...boxes].sort((a, b) =>
+    (b.x + b.w/2) - (a.x + a.w/2));
+
+  const cols = [];
+  for (const b of sorted) {
+    const cx = b.x + b.w / 2;
+    let placed = false;
+    for (const col of cols) {
+      const colCx = col.reduce((s, c) => s + c.x + c.w/2, 0) / col.length;
+      const threshold = Math.max(b.w, col[0].w) * colThreshold;
+      if (Math.abs(cx - colCx) < threshold) {
+        col.push(b);
+        placed = true;
+        break;
+      }
+    }
+    if (!placed) cols.push([b]);
+  }
+
+  // 列内按 y 从小到大（上→下）
+  cols.forEach(col => col.sort((a, b) => a.y - b.y));
+
+  // 步骤3：展平并重新编号
+  let n = 1;
+  for (const col of cols)
+    for (const b of col)
+      b.n = n++;
+}
+
+function clearAllBoxes() {
+  const clearMsg = _lang === 'en'
+    ? `Clear all ${boxes.length} box${boxes.length !== 1 ? 'es' : ''} and switch to manual mode?`
+    : `清空全部 ${boxes.length} 个框，切换到纯手工模式？`;
+  if (boxes.length && !confirm(clearMsg)) return;
+  boxes = [];
+  renderCanvas();
+  updateBoxCount();
+}
+
+function updateBoxCount() {
+  const msg = _lang === 'en'
+    ? `${boxes.length} character${boxes.length !== 1 ? 's' : ''} detected`
+    : `检测到 ${boxes.length} 个字符`;
+  document.getElementById('box-count').textContent = msg;
+  document.getElementById('btn-to-recog').disabled = boxes.length === 0;
+}
+
+// ── Step 3: 识别 ──────────────────────────────────────────────────────────────
+async function goRecognize() {
+  goStep(3);
+  setStatus('<span class="spinner"></span>识别中，请稍候...');
+  document.getElementById('char-cards').innerHTML = '';
+
+  const fd = new FormData();
+  fd.append('image', selectedFile);
+  // 发送实际四顶点坐标及外接矩形（考虑 pts 偏移）
+  const boxesForSend = boxes.map(b => {
+    const cornerPts = getCornerPts(b);
+    const xs = cornerPts.map(p => p.x), ys = cornerPts.map(p => p.y);
+    const x = Math.round(Math.min(...xs));
+    const y = Math.round(Math.min(...ys));
+    const w = Math.round(Math.max(...xs) - x);
+    const h = Math.round(Math.max(...ys) - y);
+    // 同时发送四顶点坐标，供后端精确遮盖多边形外区域
+    return {
+      n: b.n, x, y, w, h,
+      quad: cornerPts.map(p => [Math.round(p.x), Math.round(p.y)])
+    };
+  });
+  fd.append('boxes', JSON.stringify(boxesForSend));
+
+  try {
+    const total = boxes.length;
+    setStatus(`<span class="spinner"></span>发送图片识别中（共 ${total} 个字符）...`);
+    const resp = await fetch('/recognize_boxes', {method:'POST', body:fd});
+    const data = await resp.json();
+    if (data.error) { setStatus('识别失败: '+data.error); return; }
+    // 按框编号 n 排序，确保手工插入的框顺序正确
+    charResults = data.chars
+      .map(c => ({...c, confirmed: null}))
+      .sort((a, b) => a.n - b.n);
+    renderCharCards();
+
+    // ── 检查断点记录 ──────────────────────────────────────────────────
+    const checkpoint = loadCheckpoint();
+    if (checkpoint && checkpoint.imgFilename === imgFilename
+        && checkpoint.charResults.filter(c => c.confirmed).length > 0) {
+      const savedCount = checkpoint.charResults.filter(c => c.confirmed).length;
+      const lastN      = checkpoint.lastConfirmedN;
+      let msg;
+      if (_lang === 'en') {
+        msg = lastN > 0
+          ? `Checkpoint found: confirmed up to character ${lastN} (${savedCount} total). Resume?`
+          : `Checkpoint found: ${savedCount} character${savedCount !== 1 ? 's' : ''} confirmed. Resume progress?`;
+      } else {
+        msg = lastN > 0
+          ? `发现断点记录：已确认到字符 ${lastN}（共 ${savedCount} 个）。是否恢复？`
+          : `发现断点记录：已确认 ${savedCount} 个字符。是否恢复进度？`;
+      }
+      if (confirm(msg)) {
+        const resumeMsg = _lang === 'en' ? '<span class="spinner"></span>Resuming from checkpoint...' : '<span class="spinner"></span>恢复断点进度...';
+        setStatus(resumeMsg);
+        await restoreFromCheckpoint(checkpoint);
+        clearCheckpoint();
+        return;
+      } else {
+        clearCheckpoint();
+      }
+    }
+
+    // 自动选中 Top-1，逐个处理并更新计数
+    for (let i = 0; i < charResults.length; i++) {
+      const top1 = charResults[i].predictions[0];
+      if (top1) await confirmChar(i, top1.unicode_id, top1.char, 'auto');
+      setStatus(`<span class="spinner"></span>自动确认中… ${i + 1} / ${charResults.length} 个`);
+    }
+    setStatus(`识别完成：${charResults.length} 个字符，已自动选定 Top-1`);
+  } catch(e) { setStatus('请求失败: '+e.message); }
+}
+
+function renderCharCards() {
+  const container = document.getElementById('char-cards');
+  container.innerHTML = '';
+  charResults.forEach((c, ci) => {
+    const confirmed = c.confirmed;
+    const cardDiv   = document.createElement('div');
+    cardDiv.className = 'char-card ' + (confirmed ? 'confirmed' : 'unconfirmed');
+    cardDiv.id = `card-${ci}`;
+
+    // 候选格 HTML
+    let cands = c.predictions.map((p, pi) => `
+      <div class="cand ${confirmed && confirmed.uid===p.unicode_id?'selected':''}"
+           onclick="confirmChar(${ci}, '${p.unicode_id}', '${escHtml(p.char)}', 'top5')"
+           onmouseenter="showLookalike(event, '${p.unicode_id}', ${ci})"
+           onmouseleave="scheduleLookalikeHide()">
+        <span class="glyph">${p.char}</span>
+        <span class="uid">${p.unicode_id}</span>
+        <span class="conf">${(p.confidence*100).toFixed(0)}%</span>
+        ${p.source==='handwriting'?'<span class="hw-mark">手写✓</span>':''}
+      </div>`).join('');
+
+    const hanziInfo = confirmed
+      ? `<span class="confirmed-char">${confirmed.char}</span>
+         <span class="translation">→ 汉字：<span class="hanzi">${confirmed.hanzi || '—'}</span>
+         &nbsp; 发音：${confirmed.pinyin || '—'}</span>`
+      : '';
+
+    cardDiv.innerHTML = `
+      <div>
+        <img class="char-preview" src="data:image/png;base64,${c.crop_b64}" alt="字符${c.n}">
+        <div class="char-num">字符 ${c.n}</div>
+      </div>
+      <div>
+        <div class="candidates">
+          ${cands}
+          <button class="btn-open-dict" onclick="openDict(${ci})">${_lang==='en'?'Dictionary ▼':'查字库 ▼'}</button>
+        </div>
+        <div class="confirm-row" id="confirm-row-${ci}" style="${confirmed?'display:flex':'display:none'}">
+          ${hanziInfo}
+        </div>
+      </div>`;
+
+    container.appendChild(cardDiv);
+  });
+}
+
+function escHtml(s) {
+  return s.replace(/'/g,"&#39;").replace(/"/g,"&quot;");
+}
+
+function selectHanzi(cardIdx, hz) {
+  // 更新选中状态
+  const pick = document.getElementById(`hanzi-pick-${cardIdx}`);
+  if (pick) {
+    pick.querySelectorAll('.hanzi-btn').forEach(b => {
+      b.classList.toggle('hanzi-selected', b.textContent === hz);
+    });
+  }
+  // 更新大字显示
+  const chosen = document.getElementById(`chosen-hanzi-${cardIdx}`);
+  if (chosen) chosen.textContent = hz;
+  // 更新数据
+  if (charResults[cardIdx]?.confirmed)
+    charResults[cardIdx].confirmed.chosen_hanzi = hz;
+}
+
+async function confirmChar(cardIdx, uid, char, source='top5') {
+  // source: 'auto'=系统自动选定 | 'top5'=用户从Top5选 | 'dict'=用户从字库选
+  let hanzi='', pinyin='';
+  try {
+    const r = await fetch(`/zhiku/${uid}`);
+    const d = await r.json();
+    hanzi = d.hanzi || ''; pinyin = d.pinyin || '';
+  } catch {}
+
+  charResults[cardIdx].confirmed = {uid, char, hanzi, pinyin, source};
+
+  // 更新卡片
+  const card = document.getElementById(`card-${cardIdx}`);
+  card.className = 'char-card confirmed';
+
+  // 高亮选中候选
+  card.querySelectorAll('.cand').forEach(el => el.classList.remove('selected'));
+  const selectedCand = [...card.querySelectorAll('.cand')]
+    .find(el => el.querySelector('.uid')?.textContent === uid);
+  if (selectedCand) selectedCand.classList.add('selected');
+
+  // 显示确认行
+  const row = document.getElementById(`confirm-row-${cardIdx}`);
+  // 把汉字拆成单独按钮
+  const hanziChars = hanzi ? [...hanzi].map((hz, i) =>
+    `<button class="hanzi-btn ${i===0?'hanzi-selected':''}"
+             onclick="selectHanzi(${cardIdx}, '${hz}')">${hz}</button>`
+  ).join('') : '<span style="color:#aaa">—</span>';
+
+  row.innerHTML = `
+    <span class="confirmed-char">${
+      (puaChars[uid] && puaChars[uid].crop_b64)
+        ? `<img src="data:image/png;base64,${puaChars[uid].crop_b64}"
+               style="width:36px;height:36px;image-rendering:pixelated;
+                      border-radius:4px;vertical-align:middle;">`
+        : char
+    }</span>
+    <span class="translation">
+      → 汉字：<span class="hanzi-pick" id="hanzi-pick-${cardIdx}">
+        ${hanziChars}
+      </span>
+      &nbsp;
+      <span class="chosen-hanzi" id="chosen-hanzi-${cardIdx}"
+            style="font-size:18px;color:#8b1a1a;font-weight:bold;">
+        ${hanzi ? [...hanzi][0] : '—'}
+      </span>
+      &nbsp; 发音：${pinyin||'—'}
+    </span>`;
+  row.style.display = 'flex';
+  // 记录当前选中的汉字（默认第一个）
+  charResults[cardIdx].confirmed.chosen_hanzi = hanzi ? [...hanzi][0] : '';
+}
+
+// ── Step 4: 导出 ──────────────────────────────────────────────────────────────
+function goExport() {
+  goStep(4);
+
+  // 女书文字行（PUA 字符显示截图）
+  const finalHtml = charResults.map(c => {
+    const uid  = c.confirmed?.uid || c.predictions[0]?.unicode_id || '';
+    const char = c.confirmed?.char || c.predictions[0]?.char || '?';
+    const pua  = puaChars[uid];
+    if (pua && pua.crop_b64) {
+      return `<img src="data:image/png;base64,${pua.crop_b64}"
+                   style="width:1em;height:1em;image-rendering:pixelated;
+                          vertical-align:middle;border-radius:2px;"
+                   title="${uid}">`;
+    }
+    return escHtml(char);
+  }).join('');
+  document.getElementById('final-text').innerHTML = finalHtml;
+
+  // 汉字翻译行（每个字符对应选定的汉字，字间用空格分隔保持对齐感）
+  const finalHanzi = charResults.map(c => {
+    const conf = c.confirmed;
+    return conf?.chosen_hanzi || conf?.hanzi?.[0] || '？';
+  }).join('　');   // 使用全角空格使间距更自然
+  document.getElementById('final-hanzi').textContent = finalHanzi;
+
+  // 表格
+  const tbody = document.getElementById('result-tbody');
+  tbody.innerHTML = '';
+  charResults.forEach(c => {
+    const auto  = c.predictions[0];
+    const conf  = c.confirmed || {uid: auto?.unicode_id, char: auto?.char,
+                                   hanzi: auto?.hanzi||'', pinyin: auto?.pinyin||''};
+    const corrected = c.confirmed && c.confirmed.uid !== auto?.unicode_id;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${c.n}</td>
+      <td><img src="data:image/png;base64,${c.crop_b64}"
+               style="width:36px;height:36px;border:1px solid #ddd;
+                      image-rendering:pixelated;border-radius:3px;"></td>
+      <td style="font-size:24px;">${
+        (puaChars[conf.uid] && puaChars[conf.uid].crop_b64)
+          ? `<img src="data:image/png;base64,${puaChars[conf.uid].crop_b64}"
+                  style="width:32px;height:32px;image-rendering:pixelated;
+                         border-radius:3px;vertical-align:middle;">`
+          : conf.char
+      }</td>
+      <td style="font-family:monospace;font-size:12px;">${conf.uid}</td>
+      <td>${conf.chosen_hanzi || conf.hanzi || '—'}</td>
+      <td style="font-size:12px;color:#555;">${conf.pinyin || '—'}</td>
+      <td>${corrected
+        ? `<span class="corrected-mark">✏ ${_lang==='en'?'Corrected':'已人工修正'}</span>`
+        : `<span style="color:#4caf50;font-size:11px;">✓ ${_lang==='en'?'Auto':'自动'}</span>`}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function exportCorrections() {
+  const corrections = charResults.map(c => {
+    const auto   = c.predictions[0];
+    const conf   = c.confirmed || {uid: auto?.unicode_id, source: 'auto'};
+    const top5uids = c.predictions.map(p => p.unicode_id);
+    const inTop5   = top5uids.includes(conf.uid);
+    const correctionSource = conf.source || (inTop5 ? 'top5' : 'dict');
+    return {
+      order:             c.n,
+      bbox:              c.bbox,
+      auto_top1:         auto?.unicode_id || '',
+      auto_top5:         top5uids,
+      human_choice:      conf.uid || '',
+      was_corrected:     !!(c.confirmed && c.confirmed.uid !== auto?.unicode_id),
+      correction_source: correctionSource,
+      crop_b64:          c.crop_b64,
+    };
+  });
+
+  // 计算本次识别的准确率（排除 PUA 字符，它们不在训练集内）
+  const puaCount = corrections.filter(c => c.human_choice.startsWith('U1B3')).length;
+  const evalTotal   = corrections.length - puaCount;
+  const top1ok  = corrections.filter(c => !c.was_corrected && !c.human_choice.startsWith('U1B3')).length;
+  const top5ok  = corrections.filter(c =>
+    (!c.was_corrected || c.correction_source === 'top5') && !c.human_choice.startsWith('U1B3')).length;
+  const dictNeeded = corrections.filter(c =>
+    c.correction_source === 'dict' && !c.human_choice.startsWith('U1B3')).length;
+  const top1pct = evalTotal > 0 ? (top1ok / evalTotal * 100).toFixed(1) : '—';
+  const top5pct = evalTotal > 0 ? (top5ok / evalTotal * 100).toFixed(1) : '—';
+
+  fetch('/save_corrections', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({source_image: imgFilename, corrections}),
+  }).then(r=>r.json()).then(d => {
+    if (_lang === 'en') {
+      alert(
+        `Recognition accuracy (excluding ${puaCount} PUA character${puaCount!==1?'s':''}):\n` +
+        `  Evaluated: ${evalTotal} / ${corrections.length} characters\n` +
+        `  Top-1: ${top1ok}/${evalTotal} = ${top1pct}%\n` +
+        `  Top-5: ${top5ok}/${evalTotal} = ${top5pct}%\n` +
+        `  Needed dictionary lookup: ${dictNeeded}\n\n` +
+        `Saved to: ${d.saved}\n` +
+        `Correction crops saved: ${d.crops_saved}` +
+        (puaCount > 0 ? `\n\nNote: ${puaCount} PUA character(s) excluded from accuracy — no Unicode reference exists for model training.` : '')
+      );
+    } else {
+      alert(
+        `本次识别准确率（已排除 ${puaCount} 个 PUA 字符）：\n` +
+        `  有效评估：${evalTotal} / ${corrections.length} 个字符\n` +
+        `  Top-1：${top1ok}/${evalTotal} = ${top1pct}%\n` +
+        `  Top-5：${top5ok}/${evalTotal} = ${top5pct}%\n` +
+        `  需查字库：${dictNeeded} 个\n\n` +
+        `已保存到：${d.saved}\n` +
+        `纠正裁剪图：${d.crops_saved} 张` +
+        (puaCount > 0 ? `\n\n注：${puaCount} 个 PUA 字符不计入准确率（无对应 Unicode 标准体，不参与训练）。` : '')
+      );
+    }
+    clearCheckpoint();
+  }).catch(e => alert(_lang === 'en' ? 'Save failed: '+e.message : '保存失败: '+e.message));
+}
+
+function exportCSV() {
+  const rows = [['字符序号','女书','Unicode','对应汉字','发音','是否人工修正']];
+  charResults.forEach(c => {
+    const auto = c.predictions[0];
+    const conf = c.confirmed || {uid:auto?.unicode_id,char:auto?.char,hanzi:auto?.hanzi||'',pinyin:auto?.pinyin||''};
+    rows.push([c.n, conf.char, conf.uid, conf.hanzi||'', conf.pinyin||'',
+               c.confirmed && c.confirmed.uid!==auto?.unicode_id ? '是' : '否']);
+  });
+  const csv  = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});
+  const a    = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = imgFilename.replace(/[^.]+$/,'') + 'result.csv';
+  a.click();
+}
+
+function newSession() {
+  selectedFile=null; imgFilename=''; boxes=[]; charResults=[];
+  document.getElementById('preview-img').style.display='none';
+  document.getElementById('preview-img').src='';
+  document.getElementById('btn-to-detect').disabled=true;
+  document.getElementById('file-inp').value='';
+  goStep(1);
+}
+
+// ── 字库浮层 ──────────────────────────────────────────────────────────────────
+function buildDictGroupBar() {
+  const seen = new Set();
+  dictGroupList = [];
+  for (const c of allChars) {
+    const p = c.uid.slice(1,5);
+    if (!seen.has(p)) { seen.add(p); dictGroupList.push(p); }
+  }
+  // 如果有 PUA 字符，加一个特殊分组
+  if (Object.keys(puaChars).length > 0) {
+    dictGroupList.push('PUA');
+  }
+  const bar = document.getElementById('dict-group-bar');
+  bar.innerHTML = dictGroupList.map(p =>
+    `<button class="dict-group-btn ${p==='PUA'?'pua-group-btn':''}"
+             data-prefix="${p}" onclick="dictShowGroup('${p}')"
+             style="${p==='PUA'?'background:#2c4a7c;color:#fff;border-color:#2c4a7c;':''}"
+             >${p==='PUA'?(_lang==='en'?'★ PUA Extensions':'★ PUA 扩展'):p+'x'}</button>`
+  ).join('');
+}
+
+function openDict(cardIdx) {
+  dictTargetCard = cardIdx;
+  document.getElementById('dict-overlay').classList.add('open');
+  // 每次打开时重建分组栏，确保使用当前语言
+  buildDictGroupBar();
+  if (dictGroupList.length) dictShowGroup(dictGroupList[0]);
+}
+
+function closeDict() {
+  document.getElementById('dict-overlay').classList.remove('open');
+  dictTargetCard = null;
+}
+
+function openPuaManagerFromDict() {
+  // 从当前字符卡片获取 crop_b64，传给 PUA 管理器
+  const cropB64 = (dictTargetCard !== null && charResults[dictTargetCard])
+    ? charResults[dictTargetCard].crop_b64
+    : null;
+  closeDict();
+  openPuaManager(cropB64);
+}
+
+function dictShowGroup(prefix) {
+  dictCurGroup = prefix;
+  document.querySelectorAll('.dict-group-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.prefix===prefix));
+
+  const grid = document.getElementById('dict-char-grid');
+  const idx  = dictGroupList.indexOf(prefix);
+
+  // PUA 分组特殊处理
+  if (prefix === 'PUA') {
+    const entries = Object.entries(puaChars);
+    document.getElementById('dict-group-title').textContent =
+      `PUA ${_lang==='en'?'Extensions':'扩展字符'}  (${idx+1}/${dictGroupList.length})`;
+    if (entries.length === 0) {
+      grid.innerHTML = `<div style="color:#666;font-size:12px;grid-column:1/-1;
+                                    padding:20px;text-align:center;">
+        ${_lang==='en'
+          ? 'No PUA characters yet. Click "+ PUA Extensions" in the top-right to add one.'
+          : '暂无 PUA 字符。点击右上角「＋ PUA 扩展字符」添加。'}</div>`;
+    } else {
+      grid.style.display = 'block';
+      grid.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="color:#888;border-bottom:1px solid #333;">
+            <th style="padding:4px 8px;text-align:left;font-weight:normal;">${_lang==='en'?'Image':'手写图'}</th>
+            <th style="padding:4px 8px;text-align:left;font-weight:normal;">UID</th>
+            <th style="padding:4px 8px;text-align:left;font-weight:normal;">${_lang==='en'?'Hanzi':'汉字'}</th>
+            <th style="padding:4px 8px;text-align:left;font-weight:normal;">${_lang==='en'?'Source':'来源'}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${entries.map(([uid, c]) => `
+          <tr style="border-bottom:1px solid #2a2a2a;cursor:pointer;"
+              onclick="dictSelect('${uid}','${escHtml(c.label||'?')}')"
+              onmouseover="this.style.background='#2a2a2a'" onmouseout="this.style.background=''">
+            <td style="padding:6px 8px;">
+              ${c.crop_b64
+                ? `<img src="data:image/png;base64,${c.crop_b64}"
+                       style="width:40px;height:40px;image-rendering:pixelated;
+                              border:1px solid #555;border-radius:3px;display:block;">`
+                : `<span style="color:#555;">[${_lang==='en'?'no img':'无图'}]</span>`}
+            </td>
+            <td style="padding:6px 8px;font-family:monospace;color:#c9a96e;white-space:nowrap;">${uid}</td>
+            <td style="padding:6px 8px;color:#4caf50;font-size:15px;">${c.hanzi || '<span style="color:#555;">—</span>'}</td>
+            <td style="padding:6px 8px;color:#aaa;">${c.source || '<span style="color:#555;">—</span>'}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+    }
+    const btn = document.querySelector(`.dict-group-btn[data-prefix="PUA"]`);
+    if (btn) btn.scrollIntoView({block:'nearest',inline:'nearest'});
+    return;
+  }
+
+  // 标准字库分组
+  grid.style.display = '';
+  const group = allChars.filter(c => c.uid.slice(1,5)===prefix);
+  const first = group[0], last = group[group.length-1];
+  document.getElementById('dict-group-title').textContent =
+    `${first?.unicode} – ${last?.unicode}  (${idx+1}/${dictGroupList.length})`;
+  grid.innerHTML = group.map(c => `
+    <div class="dict-cell" onclick="dictSelect('${c.uid}','${escHtml(c.char)}')"
+         title="${c.unicode}">
+      <span>${c.char}</span>
+      <span class="d-uid">${c.uid.slice(1)}</span>
+    </div>`).join('');
+  const btn = document.querySelector(`.dict-group-btn[data-prefix="${prefix}"]`);
+  if (btn) btn.scrollIntoView({block:'nearest',inline:'nearest'});
+}
+
+function dictPrevGroup() {
+  const i = dictGroupList.indexOf(dictCurGroup);
+  if (i>0) dictShowGroup(dictGroupList[i-1]);
+}
+function dictNextGroup() {
+  const i = dictGroupList.indexOf(dictCurGroup);
+  if (i<dictGroupList.length-1) dictShowGroup(dictGroupList[i+1]);
+}
+
+async function dictSelect(uid, char) {
+  const cardIdx = dictTargetCard;
+  closeDict();
+  if (cardIdx === null) return;
+
+  // 确认字符（查翻译、更新卡片确认行）
+  await confirmChar(cardIdx, uid, char, 'dict');
+
+  // 把「查字库」按钮变成选中字符的展示框，并标记为"字库手动选定"
+  const card    = document.getElementById(`card-${cardIdx}`);
+  const dictBtn = card?.querySelector('.btn-open-dict');
+  if (dictBtn) {
+    // 如果是 PUA 字符且有截图，显示截图而不是字符
+    const puaEntry = puaChars[uid];
+    if (puaEntry && puaEntry.crop_b64) {
+      dictBtn.innerHTML = `<img src="data:image/png;base64,${puaEntry.crop_b64}"
+        style="width:28px;height:28px;image-rendering:pixelated;
+               vertical-align:middle;border-radius:3px;">`;
+    } else {
+      dictBtn.textContent = char;
+    }
+    dictBtn.title = `${uid}（字库手动选定）`;
+    dictBtn.classList.add('dict-chosen');
+    // 点击仍可重新打开字库
+    dictBtn.onclick = () => openDict(cardIdx);
+  }
+
+  // 取消所有候选框的高亮（5 个自动候选都不对）
+  const cands = card?.querySelectorAll('.cand');
+  cands?.forEach(el => el.classList.remove('selected'));
+}
+
+// ── 工具 ──────────────────────────────────────────────────────────────────────
+function setStatus(msg) {
+  document.getElementById('status-bar').innerHTML = msg;
+}
+
+// 键盘：[ ] 切换字库分组
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('dict-overlay').classList.contains('open')) return;
+  if (e.key==='[') { e.preventDefault(); dictPrevGroup(); }
+  if (e.key===']') { e.preventDefault(); dictNextGroup(); }
+  if (e.key==='Escape') closeDict();
+});
+
+// ── PUA 管理 ──────────────────────────────────────────────────────────────────
+let puaChars = {};   // uid -> {label, source, hanzi, note, ...}
+
+// 当前要注册的 PUA 字符的 crop_b64（从字符卡片传入）
+let _puaCropB64 = null;
+
+async function openPuaManager(cropB64) {
+  _puaCropB64 = cropB64 || null;
+
+  // 更新界面语言
+  const en = _lang === 'en';
+  document.getElementById('pua-title').innerHTML =
+    (en ? 'PUA Extension Characters &nbsp;<span style="font-size:11px;color:#c9a96e;">Starting at U+1B300</span>'
+        : 'PUA 扩展字符管理 &nbsp;<span style="font-size:11px;color:#c9a96e;">码位 U+1B300 起</span>');
+  document.getElementById('pua-add-title').textContent = en ? 'Register new PUA character' : '新增 PUA 字符';
+  document.getElementById('pua-add-btn').textContent   = en ? '＋ Assign codepoint & register' : '＋ 分配新码位并登记';
+  document.getElementById('pua-list-title').textContent = en ? 'Registered PUA characters' : '已登记 PUA 字符';
+  document.getElementById('pua-source').placeholder = en ? 'Source manuscript (e.g. YuXiu)' : '来源文献（如：YuXiu手稿）';
+  document.getElementById('pua-hanzi').placeholder  = en ? 'Chinese equivalent (if any)'   : '对应汉字（若有）';
+  document.getElementById('pua-note').placeholder   = en ? 'Notes'                          : '备注';
+
+  // 显示截图预览
+  const preview = document.getElementById('pua-crop-preview');
+  const img     = document.getElementById('pua-crop-img');
+  const hint    = document.getElementById('pua-crop-hint');
+  if (_puaCropB64) {
+    img.src = 'data:image/png;base64,' + _puaCropB64;
+    hint.textContent = en
+      ? 'This handwriting crop will be stored as the visual representation of the new PUA character.'
+      : '此手写截图将作为新 PUA 字符的字形图像存储。';
+    preview.style.display = 'flex';
+  } else {
+    preview.style.display = 'none';
+  }
+
+  document.getElementById('pua-overlay').style.display = 'flex';
+  await refreshPuaList();
+}
+
+function closePuaManager() {
+  document.getElementById('pua-overlay').style.display = 'none';
+  _puaCropB64 = null;
+}
+
+async function refreshPuaList() {
+  const resp = await fetch('/pua');
+  const data = await resp.json();
+  puaChars   = data.chars || {};
+  const total = data.total || 0;
+  const en = _lang === 'en';
+
+  document.getElementById('pua-count').textContent = en ? `(${total})` : `共 ${total} 个`;
+
+  const list = document.getElementById('pua-list');
+  if (total === 0) {
+    list.innerHTML = `<div style="color:#555;font-size:12px;">${en ? 'No PUA characters registered yet.' : '尚未登记任何 PUA 字符'}</div>`;
+    return;
+  }
+  list.innerHTML = `
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="color:#888;border-bottom:1px solid #333;">
+          <th style="padding:4px 6px;text-align:left;font-weight:normal;">${en?'Image':'手写图'}</th>
+          <th style="padding:4px 6px;text-align:left;font-weight:normal;">UID</th>
+          <th style="padding:4px 6px;text-align:left;font-weight:normal;">${en?'Hanzi':'对应汉字'}</th>
+          <th style="padding:4px 6px;text-align:left;font-weight:normal;">${en?'Source':'来源'}</th>
+          <th style="padding:4px 6px;text-align:left;font-weight:normal;">${en?'Note':'备注'}</th>
+          <th style="padding:4px 6px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.entries(puaChars).map(([uid, c]) => `
+        <tr style="border-bottom:1px solid #2a2a2a;">
+          <td style="padding:6px 6px;">
+            ${c.crop_b64
+              ? `<img src="data:image/png;base64,${c.crop_b64}"
+                     style="width:40px;height:40px;image-rendering:pixelated;
+                            border:1px solid #555;border-radius:3px;display:block;">`
+              : `<span style="color:#555;">[${en?'no img':'无图'}]</span>`}
+          </td>
+          <td style="padding:6px;font-family:monospace;color:#c9a96e;white-space:nowrap;">${uid}</td>
+          <td style="padding:6px;color:#4caf50;font-size:15px;">${c.hanzi || '<span style="color:#555;">—</span>'}</td>
+          <td style="padding:6px;color:#aaa;">${c.source || '<span style="color:#555;">—</span>'}</td>
+          <td style="padding:6px;color:#666;">${c.note || ''}</td>
+          <td style="padding:6px;">
+            <button onclick="deletePuaChar('${uid}')"
+                    style="background:none;border:none;color:#555;cursor:pointer;
+                           font-size:13px;padding:2px 4px;"
+                    title="${en?'Delete':'删除'}">✕</button>
+          </td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+async function addPuaChar() {
+  const source = document.getElementById('pua-source').value.trim();
+  const hanzi  = document.getElementById('pua-hanzi').value.trim();
+  const note   = document.getElementById('pua-note').value.trim();
+  const en     = _lang === 'en';
+
+  if (!_puaCropB64 && !source) {
+    alert(en ? 'Please fill in the source manuscript field.' : '请填写来源文献');
+    return;
+  }
+
+  const resp = await fetch('/pua/add', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      label:    source || (en ? 'PUA char' : 'PUA字符'),
+      source, hanzi, note,
+      crop_b64: _puaCropB64 || null,
+    }),
+  });
+  const data = await resp.json();
+  if (data.error) { alert((en ? 'Error: ' : '失败: ') + data.error); return; }
+
+  ['pua-source','pua-hanzi','pua-note'].forEach(id => document.getElementById(id).value = '');
+
+  const result = document.getElementById('pua-add-result');
+  result.textContent = en ? `✓ Assigned ${data.uid}` : `✓ 已分配 ${data.uid}`;
+  setTimeout(() => result.textContent = '', 3000);
+
+  await refreshPuaList();
+  await refreshDictPuaGroup();
+}
+
+async function deletePuaChar(uid) {
+  const en = _lang === 'en';
+  if (!confirm(en ? `Delete ${uid}?` : `确认删除 ${uid}？`)) return;
+  await fetch(`/pua/${uid}`, {method:'DELETE'});
+  await refreshPuaList();
+  await refreshDictPuaGroup();
+}
+
+// 刷新字库浮窗里的 PUA 分组
+async function refreshDictPuaGroup() {
+  const resp = await fetch('/pua');
+  const data = await resp.json();
+  puaChars   = data.chars || {};
+  // 如果字典分组栏已经有 PUA 分组按钮则更新，否则重建
+  buildDictGroupBar();
+}
+
+// ── 框位置记录（Box Layout Memory）────────────────────────────────────────────
+// 用 localStorage 按文件名保存框位置，key 前缀 nushu_boxes_
+const BOX_LAYOUT_PREFIX = 'nushu_boxes_';
+
+function saveBoxLayout() {
+  if (!boxes.length) { alert('当前没有框，请先标定字符位置'); return; }
+  const key  = BOX_LAYOUT_PREFIX + imgFilename;
+  const data = {
+    imgFilename,
+    imgW: imgNaturalW,
+    imgH: imgNaturalH,
+    boxes,
+    savedAt: new Date().toISOString(),
+  };
+  localStorage.setItem(key, JSON.stringify(data));
+  setStatus(`✓ 已保存 ${boxes.length} 个框的位置记录（文件：${imgFilename}）`);
+}
+
+function loadBoxLayout() {
+  if (!imgFilename) return null;
+  const key = BOX_LAYOUT_PREFIX + imgFilename;
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+function deleteBoxLayout() {
+  const key = BOX_LAYOUT_PREFIX + imgFilename;
+  localStorage.removeItem(key);
+}
+
+// 检查有无已保存的框位置记录，在进入第二步时调用
+async function checkAndOfferBoxLayout() {
+  const saved = loadBoxLayout();
+  if (!saved || !saved.boxes || saved.boxes.length === 0) return false;
+
+  // 检查图片尺寸是否一致（防止同名但不同图片误加载）
+  const sizeMatch = saved.imgW === imgNaturalW && saved.imgH === imgNaturalH;
+  const savedDate = new Date(saved.savedAt).toLocaleString(_lang === 'en' ? 'en-US' : 'zh-CN');
+  let msg;
+  if (_lang === 'en') {
+    msg = sizeMatch
+      ? `Found saved box layout for this file (${saved.boxes.length} boxes, saved on ${savedDate}).\nLoad it?`
+      : `Found a saved box layout for a file with the same name, but the image size differs (possibly a different scan).\nLoad anyway?`;
+  } else {
+    msg = sizeMatch
+      ? `发现该文件的框位置记录（${saved.boxes.length} 个框，保存于 ${savedDate}）。\n是否加载？`
+      : `发现同名文件的框位置记录，但图片尺寸不同，可能是不同版本的扫描件。\n仍要加载？`;
+  }
+
+  if (confirm(msg)) {
+    boxes = saved.boxes;
+    renderCanvas();
+    updateBoxCount();
+    document.getElementById('btn-to-recog').disabled = boxes.length === 0;
+    const statusMsg = _lang === 'en'
+      ? `✓ Loaded ${boxes.length} saved box positions`
+      : `✓ 已加载 ${boxes.length} 个框的历史位置记录`;
+    setStatus(statusMsg);
+    return true;
+  }
+  return false;
+}
+
+// ── 断点续作（Progress Checkpoint）────────────────────────────────────────────
+const CHECKPOINT_KEY = 'nushu_ocr_checkpoint';
+
+function saveProgress(lastConfirmedN) {
+  // 保存：图片名、框列表、所有字符结果（含已确认状态）
+  const data = {
+    imgFilename,
+    imgNaturalW,
+    imgNaturalH,
+    boxes,
+    charResults: charResults.map(c => ({
+      n:           c.n,
+      bbox:        c.bbox,
+      crop_b64:    c.crop_b64,
+      predictions: c.predictions,
+      confirmed:   c.confirmed,   // null 或 {uid, char, hanzi, pinyin, source}
+    })),
+    lastConfirmedN: lastConfirmedN || 0,
+    savedAt: new Date().toISOString(),
+  };
+  localStorage.setItem(CHECKPOINT_KEY, JSON.stringify(data));
+  return data.charResults.filter(c => c.confirmed).length;
+}
+
+function loadCheckpoint() {
+  try {
+    const raw = localStorage.getItem(CHECKPOINT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+function clearCheckpoint() {
+  localStorage.removeItem(CHECKPOINT_KEY);
+}
+
+function saveProgressAndGoBack() {
+  const confirmed = charResults.filter(c => c.confirmed).length;
+  if (confirmed === 0) {
+    goStep(2);
+    document.getElementById('btn-back-to-detect').style.display = 'block';
+    return;
+  }
+
+  const promptMsg = _lang === 'en'
+    ? `${confirmed} character${confirmed !== 1 ? 's' : ''} confirmed so far.\n` +
+      `Enter the last confirmed character number (leave blank to save all confirmed):`
+    : `当前已确认 ${confirmed} 个字符。\n` +
+      `请输入最后确认完成的字符编号（留空则保存全部已确认的字符）：`;
+
+  const lastN = prompt(promptMsg);
+  const lastConfirmedN = lastN ? parseInt(lastN) || 0 : 0;
+  const saved = saveProgress(lastConfirmedN);
+  const statusMsg = _lang === 'en'
+    ? `✓ Progress saved (${saved} characters). Return to adjust boxes and continue later.`
+    : `✓ 已保存 ${saved} 个字符的进度，返回调整框位置后可继续`;
+  setStatus(statusMsg);
+  goStep(2);
+  document.getElementById('btn-back-to-detect').style.display = 'block';
+}
+
+function goBackToDetectFromStep3() {
+  // 第二步的「保存进度并返回」——直接从第二步返回，不需要保存（第三步的保存已做）
+  goStep(2);
+}
+
+async function restoreFromCheckpoint(checkpoint) {
+  const lastN = checkpoint.lastConfirmedN || 0;
+
+  // 分两组：
+  // - n <= lastN：用户人工确认过的，恢复旧结果
+  // - n > lastN ：自动选的，用新识别的 predictions[0] 重新选
+  const humanConfirmed = checkpoint.charResults.filter(
+    c => c.confirmed && c.n <= lastN
+  );
+  const autoAfterBreak = charResults.filter(c => c.n > lastN);
+
+  // 先把人工确认的状态写回
+  for (const saved of humanConfirmed) {
+    const idx = charResults.findIndex(c => c.n === saved.n);
+    if (idx < 0) continue;
+    charResults[idx].confirmed = saved.confirmed;
+    if (!charResults[idx].crop_b64 && saved.crop_b64) {
+      charResults[idx].crop_b64    = saved.crop_b64;
+      charResults[idx].predictions = saved.predictions;
+    }
+  }
+
+  // 渲染所有卡片
+  renderCharCards();
+
+  // 恢复人工确认的字符 UI（含汉字选定）
+  for (const saved of humanConfirmed) {
+    const idx = charResults.findIndex(c => c.n === saved.n);
+    if (idx < 0) continue;
+    await confirmChar(idx, saved.confirmed.uid, saved.confirmed.char,
+                      saved.confirmed.source || 'auto');
+    if (saved.confirmed.chosen_hanzi) {
+      selectHanzi(idx, saved.confirmed.chosen_hanzi);
+    }
+  }
+
+  // 断点之后的字符：用新识别的 predictions[0] 自动选定
+  if (autoAfterBreak.length > 0) {
+    setStatus(`<span class="spinner"></span>恢复断点：对字符 ${lastN+1} 之后的 ${autoAfterBreak.length} 个字符自动选 Top-1...`);
+    for (const c of autoAfterBreak) {
+      const idx  = charResults.indexOf(c);
+      const top1 = c.predictions?.[0];
+      if (top1) await confirmChar(idx, top1.unicode_id, top1.char, 'auto');
+    }
+  }
+
+  const resumeMsg = lastN > 0
+    ? `已恢复断点，字符 1-${lastN} 保留人工确认结果，字符 ${lastN+1} 起已自动选 Top-1`
+    : `已恢复 ${humanConfirmed.length} 个字符，其余已自动选 Top-1`;
+  setStatus(`✓ ${resumeMsg}`);
+
+  // 滚动到断点位置
+  const resumeCard = charResults.find(c => c.n === lastN + 1)
+    || charResults.find(c => c.n > lastN);
+  if (resumeCard) {
+    const idx = charResults.indexOf(resumeCard);
+    const card = document.getElementById(`card-${idx}`);
+    if (card) setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'center'}), 300);
+  }
+}
+
+// ── 形近字悬浮窗 ──────────────────────────────────────────────────────────────
+let _lkHideTimer    = null;
+let _lkTargetCard   = null;   // 当前悬浮窗对应的 cardIdx
+
+function showLookalike(event, uid, cardIdx) {
+  // 取消隐藏计时器（鼠标在悬浮窗和候选格之间移动时保持显示）
+  if (_lkHideTimer) { clearTimeout(_lkHideTimer); _lkHideTimer = null; }
+  _lkTargetCard = cardIdx;
+
+  fetch(`/lookalike/${uid}`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.group || data.group.length === 0) return;  // 不在任何分组里，不弹窗
+
+      const popup = document.getElementById('lookalike-popup');
+      const grid  = document.getElementById('lookalike-grid');
+
+      grid.innerHTML = data.group.map(item => `
+        <div class="lk-cell ${item.uid === uid ? 'lk-current' : ''}"
+             onmouseenter="cancelLookalikeHide()"
+             onmouseleave="scheduleLookalikeHide()"
+             onclick="selectFromLookalike('${item.uid}', '${escHtml(item.char)}')">
+          <span class="lk-glyph">${item.char}</span>
+          <span class="lk-uid">${item.uid.slice(1)}</span>
+          ${item.hanzi ? `<span class="lk-hanzi">${[...item.hanzi][0]}</span>` : ''}
+        </div>`).join('');
+
+      // 定位：出现在鼠标右侧，防止超出屏幕
+      const x = Math.min(event.clientX + 12, window.innerWidth  - 340);
+      const y = Math.min(event.clientY - 20, window.innerHeight - 200);
+      popup.style.left    = x + 'px';
+      popup.style.top     = y + 'px';
+      popup.style.display = 'block';
+    })
+    .catch(() => {});  // 网络错误静默处理
+}
+
+function scheduleLookalikeHide() {
+  // 延迟隐藏，给点击事件留出处理时间
+  _lkHideTimer = setTimeout(() => {
+    document.getElementById('lookalike-popup').style.display = 'none';
+    // 注意：不在这里清 _lkTargetCard，由 selectFromLookalike 负责
+  }, 300);
+}
+
+function cancelLookalikeHide() {
+  if (_lkHideTimer) { clearTimeout(_lkHideTimer); _lkHideTimer = null; }
+}
+
+async function selectFromLookalike(uid, char) {
+  // 立即取消所有隐藏计时器，先保存 cardIdx 再关窗
+  if (_lkHideTimer) { clearTimeout(_lkHideTimer); _lkHideTimer = null; }
+  const cardIdx = _lkTargetCard;   // 先保存，防止被异步清空
+
+  // 关闭悬浮窗
+  document.getElementById('lookalike-popup').style.display = 'none';
+  _lkTargetCard = null;
+
+  // 确认字符
+  if (cardIdx !== null) {
+    await confirmChar(cardIdx, uid, char, 'top5');
+  }
+}
+
+// 点击页面其他区域关闭悬浮窗（排除浮窗内部和候选格）
+document.addEventListener('click', e => {
+  const popup = document.getElementById('lookalike-popup');
+  if (!popup) return;
+  // 如果点击的是浮窗内部，不做任何处理（由 selectFromLookalike 处理）
+  if (popup.contains(e.target)) return;
+  if (e.target.closest('.cand')) return;
+  popup.style.display = 'none';
+});
+
+// ── 中英文切换 ────────────────────────────────────────────────────────────────
+let _lang = 'zh';   // 当前语言 current language
+
+const _i18n = {
+  zh: {
+    title:   'NüshuSight OCR Studio',
+    step1:   '第一步：上传手写女书图片',
+    step2:   '第二步：确认字符检测框（可人工调整）',
+    step3:   '第三步：确认识别结果（点击候选字符确认，或查字库）',
+    step4:   '第四步：识别结果与导出',
+    upload:  '点击上传或拖放图片',
+    hint:    '支持 JPG / PNG · 建议白底黑字',
+    next1:   '下一步：检测字符位置 →',
+    redetect:'🔄 重新自动检测',
+    clear:   '🗑 清空所有框（手动模式）',
+    saveBox: '💾 保存框位置记录',
+    backDet: '← 返回调整框',
+    saveBack:'↩ 保存进度，返回调整框',
+    confirm: '确认框位置，开始识别 →',
+    exportResult: '完成，导出结果 →',
+    resumeHint: '📌 已从识别步骤返回，可继续调整检测框',
+    thImg: '字符图', thNushu: '女书', thHanzi: '对应汉字', thPinyin: '发音', thSource: '来源',
+    toLang:  'EN',
+    dot1:    '上传图片', dot2:'检测纠错', dot3:'识别确认', dot4:'导出结果',
+    finalLabel: '女书原文', hanziLabel: '汉字对照',
+    exportBtn:  '💾 导出纠错数据（用于训练）',
+    csvBtn:     '📊 导出 CSV 结果',
+    newBtn:     '开始新图片',
+    backBtn:    '← 返回修改',
+    minSize:    '最小字符尺寸',
+    maxSize:    '最大字符尺寸',
+    colThresh:  '列分组宽松度',
+    colHint:    '（倾斜书写调大）',
+    dictTitle:  '字库选择',
+    dictPua:    '★ PUA 扩展字符',
+    batchBtn:   '📂 批量识别目录',
+    runBtn:     '识别单图',
+    detParams:  '检测参数',
+    tipTitle:   '操作提示：',
+    tip1:       '• 拖动框：移动位置',
+    tip2:       '• 拖动角点：调整大小',
+    tip3:       '• 双击：删除框',
+    tip4:       '• Shift+拖拽：新增框',
+  },
+  en: {
+    title:   'NüshuSight OCR Studio',
+    step1:   'Step 1: Upload Handwritten Nüshu Image',
+    step2:   'Step 2: Confirm Character Bounding Boxes (adjustable)',
+    step3:   'Step 3: Review Recognition Results (click to confirm or open dictionary)',
+    step4:   'Step 4: Results and Export',
+    upload:  'Click to upload or drag & drop',
+    hint:    'JPG / PNG · White background recommended',
+    next1:   'Next: Detect Characters →',
+    redetect:'🔄 Re-detect',
+    clear:   '🗑 Clear All Boxes (manual mode)',
+    saveBox: '💾 Save Box Layout',
+    backDet: '← Back to Boxes',
+    saveBack:'↩ Save Progress & Return',
+    confirm: 'Confirm Boxes, Start Recognition →',
+    exportResult: 'Done, Export Results →',
+    resumeHint: '📌 Returned from recognition — adjust boxes and re-recognize when ready',
+    thImg: 'Image', thNushu: 'Nüshu', thHanzi: 'Chinese', thPinyin: 'Pronunciation', thSource: 'Source',
+    toLang:  '中文',
+    dot1:    'Upload', dot2:'Detect', dot3:'Recognize', dot4:'Export',
+    finalLabel: 'Nüshu Text', hanziLabel: 'Chinese Translation',
+    exportBtn:  '💾 Export Correction Data (for training)',
+    csvBtn:     '📊 Export CSV',
+    newBtn:     'New Image',
+    backBtn:    '← Back',
+    minSize:    'Min char size',
+    maxSize:    'Max char size',
+    colThresh:  'Column grouping',
+    colHint:    '(increase for tilted writing)',
+    dictTitle:  'Character Dictionary',
+    dictPua:    '＋ PUA Extensions',
+    batchBtn:   '📂 Batch Recognize Folder',
+    runBtn:     'Recognize',
+    detParams:  'Detection Parameters',
+    tipTitle:   'Controls:',
+    tip1:       '• Drag box: move position',
+    tip2:       '• Drag corner: resize',
+    tip3:       '• Double-click: delete box',
+    tip4:       '• Shift+drag: add new box',
+  },
+};
+
+function toggleLang() {
+  _lang = _lang === 'zh' ? 'en' : 'zh';
+  applyLang();
+}
+
+function applyLang() {
+  const t = _i18n[_lang];
+  const $ = id => document.getElementById(id);
+
+  // 标题和 badge 按钮
+  const titleEl = $('ui-title');
+  if (titleEl) titleEl.textContent = t.title;
+  const langBtn = $('lang-btn');
+  if (langBtn) langBtn.textContent = t.toLang;
+
+  // 步骤标题
+  const stepTitles = document.querySelectorAll('.step-title');
+  const titles = [t.step1, t.step2, t.step3, t.step4];
+  stepTitles.forEach((el, i) => { if (titles[i]) el.textContent = titles[i]; });
+
+  // 上传区
+  const uploadLabel = document.querySelector('.upload-zone .label');
+  if (uploadLabel) uploadLabel.textContent = t.upload;
+  const uploadHint = document.querySelector('.upload-zone .hint');
+  if (uploadHint) uploadHint.textContent = t.hint;
+
+  // 步骤导航点 tooltip
+  ['dot-1','dot-2','dot-3','dot-4'].forEach((id, i) => {
+    const d = $(id);
+    if (d) d.title = [t.dot1, t.dot2, t.dot3, t.dot4][i];
+  });
+
+  // 按钮文字
+  const btnMap = {
+    'btn-to-detect': t.next1,
+    'btn-to-recog':  t.confirm,
+    'lang-btn': t.toLang,
+  };
+  Object.entries(btnMap).forEach(([id, text]) => {
+    const el = $(id);
+    if (el && text) el.textContent = text;
+  });
+
+  // 滑块标签
+  const minLabel = document.querySelector('label[for-id="min-size"], .slider-row label');
+  // 用 data-i18n 属性更稳健——先对所有带 data-i18n 的元素批量替换
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // 最终结果区标签
+  const finalLabel = document.querySelector('#step-4 [data-label="nushu"]');
+  const hanziLabel = document.querySelector('#step-4 [data-label="hanzi"]');
+  if (finalLabel) finalLabel.textContent = t.finalLabel;
+  if (hanziLabel) hanziLabel.textContent = t.hanziLabel;
+
+  // 字库浮层标题
+  const dictHeaderSpan = document.querySelector('#dict-overlay .dict-panel header span');
+  if (dictHeaderSpan) dictHeaderSpan.textContent = t.dictTitle;
+
+  // 动态生成的"查字库"按钮（未被选中的才更新，已选中的变成展示框不受影响）
+  document.querySelectorAll('.btn-open-dict:not(.dict-chosen)').forEach(btn => {
+    btn.textContent = _lang === 'en' ? 'Dictionary ▼' : '查字库 ▼';
+  });
+}
+
+// 初始化
+init();
+</script>
+</body>
+</html>
