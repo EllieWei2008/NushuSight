@@ -1,0 +1,3202 @@
+[
+  {
+    "unicode_id": "U1B170",
+    "char": "𛅰",
+    "codepoint": "0x1b170",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B171",
+    "char": "𛅱",
+    "codepoint": "0x1b171",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B172",
+    "char": "𛅲",
+    "codepoint": "0x1b172",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B173",
+    "char": "𛅳",
+    "codepoint": "0x1b173",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B174",
+    "char": "𛅴",
+    "codepoint": "0x1b174",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B175",
+    "char": "𛅵",
+    "codepoint": "0x1b175",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B176",
+    "char": "𛅶",
+    "codepoint": "0x1b176",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B177",
+    "char": "𛅷",
+    "codepoint": "0x1b177",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B178",
+    "char": "𛅸",
+    "codepoint": "0x1b178",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B179",
+    "char": "𛅹",
+    "codepoint": "0x1b179",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B17A",
+    "char": "𛅺",
+    "codepoint": "0x1b17a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B17B",
+    "char": "𛅻",
+    "codepoint": "0x1b17b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B17C",
+    "char": "𛅼",
+    "codepoint": "0x1b17c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B17D",
+    "char": "𛅽",
+    "codepoint": "0x1b17d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B17E",
+    "char": "𛅾",
+    "codepoint": "0x1b17e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B17F",
+    "char": "𛅿",
+    "codepoint": "0x1b17f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B180",
+    "char": "𛆀",
+    "codepoint": "0x1b180",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B181",
+    "char": "𛆁",
+    "codepoint": "0x1b181",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B182",
+    "char": "𛆂",
+    "codepoint": "0x1b182",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B183",
+    "char": "𛆃",
+    "codepoint": "0x1b183",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B184",
+    "char": "𛆄",
+    "codepoint": "0x1b184",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B185",
+    "char": "𛆅",
+    "codepoint": "0x1b185",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B186",
+    "char": "𛆆",
+    "codepoint": "0x1b186",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B187",
+    "char": "𛆇",
+    "codepoint": "0x1b187",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B188",
+    "char": "𛆈",
+    "codepoint": "0x1b188",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B189",
+    "char": "𛆉",
+    "codepoint": "0x1b189",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B18A",
+    "char": "𛆊",
+    "codepoint": "0x1b18a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B18B",
+    "char": "𛆋",
+    "codepoint": "0x1b18b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B18C",
+    "char": "𛆌",
+    "codepoint": "0x1b18c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B18D",
+    "char": "𛆍",
+    "codepoint": "0x1b18d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B18E",
+    "char": "𛆎",
+    "codepoint": "0x1b18e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B18F",
+    "char": "𛆏",
+    "codepoint": "0x1b18f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B190",
+    "char": "𛆐",
+    "codepoint": "0x1b190",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B191",
+    "char": "𛆑",
+    "codepoint": "0x1b191",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B192",
+    "char": "𛆒",
+    "codepoint": "0x1b192",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B193",
+    "char": "𛆓",
+    "codepoint": "0x1b193",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B194",
+    "char": "𛆔",
+    "codepoint": "0x1b194",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B195",
+    "char": "𛆕",
+    "codepoint": "0x1b195",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B196",
+    "char": "𛆖",
+    "codepoint": "0x1b196",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B197",
+    "char": "𛆗",
+    "codepoint": "0x1b197",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B198",
+    "char": "𛆘",
+    "codepoint": "0x1b198",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B199",
+    "char": "𛆙",
+    "codepoint": "0x1b199",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B19A",
+    "char": "𛆚",
+    "codepoint": "0x1b19a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B19B",
+    "char": "𛆛",
+    "codepoint": "0x1b19b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B19C",
+    "char": "𛆜",
+    "codepoint": "0x1b19c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B19D",
+    "char": "𛆝",
+    "codepoint": "0x1b19d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B19E",
+    "char": "𛆞",
+    "codepoint": "0x1b19e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B19F",
+    "char": "𛆟",
+    "codepoint": "0x1b19f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A0",
+    "char": "𛆠",
+    "codepoint": "0x1b1a0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A1",
+    "char": "𛆡",
+    "codepoint": "0x1b1a1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A2",
+    "char": "𛆢",
+    "codepoint": "0x1b1a2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A3",
+    "char": "𛆣",
+    "codepoint": "0x1b1a3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A4",
+    "char": "𛆤",
+    "codepoint": "0x1b1a4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A5",
+    "char": "𛆥",
+    "codepoint": "0x1b1a5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A6",
+    "char": "𛆦",
+    "codepoint": "0x1b1a6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A7",
+    "char": "𛆧",
+    "codepoint": "0x1b1a7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A8",
+    "char": "𛆨",
+    "codepoint": "0x1b1a8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1A9",
+    "char": "𛆩",
+    "codepoint": "0x1b1a9",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1AA",
+    "char": "𛆪",
+    "codepoint": "0x1b1aa",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1AB",
+    "char": "𛆫",
+    "codepoint": "0x1b1ab",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1AC",
+    "char": "𛆬",
+    "codepoint": "0x1b1ac",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1AD",
+    "char": "𛆭",
+    "codepoint": "0x1b1ad",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1AE",
+    "char": "𛆮",
+    "codepoint": "0x1b1ae",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1AF",
+    "char": "𛆯",
+    "codepoint": "0x1b1af",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B0",
+    "char": "𛆰",
+    "codepoint": "0x1b1b0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B1",
+    "char": "𛆱",
+    "codepoint": "0x1b1b1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B2",
+    "char": "𛆲",
+    "codepoint": "0x1b1b2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B3",
+    "char": "𛆳",
+    "codepoint": "0x1b1b3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B4",
+    "char": "𛆴",
+    "codepoint": "0x1b1b4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B5",
+    "char": "𛆵",
+    "codepoint": "0x1b1b5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B6",
+    "char": "𛆶",
+    "codepoint": "0x1b1b6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B7",
+    "char": "𛆷",
+    "codepoint": "0x1b1b7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B8",
+    "char": "𛆸",
+    "codepoint": "0x1b1b8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1B9",
+    "char": "𛆹",
+    "codepoint": "0x1b1b9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1BA",
+    "char": "𛆺",
+    "codepoint": "0x1b1ba",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1BB",
+    "char": "𛆻",
+    "codepoint": "0x1b1bb",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1BC",
+    "char": "𛆼",
+    "codepoint": "0x1b1bc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1BD",
+    "char": "𛆽",
+    "codepoint": "0x1b1bd",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1BE",
+    "char": "𛆾",
+    "codepoint": "0x1b1be",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1BF",
+    "char": "𛆿",
+    "codepoint": "0x1b1bf",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C0",
+    "char": "𛇀",
+    "codepoint": "0x1b1c0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C1",
+    "char": "𛇁",
+    "codepoint": "0x1b1c1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C2",
+    "char": "𛇂",
+    "codepoint": "0x1b1c2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C3",
+    "char": "𛇃",
+    "codepoint": "0x1b1c3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C4",
+    "char": "𛇄",
+    "codepoint": "0x1b1c4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C5",
+    "char": "𛇅",
+    "codepoint": "0x1b1c5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C6",
+    "char": "𛇆",
+    "codepoint": "0x1b1c6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C7",
+    "char": "𛇇",
+    "codepoint": "0x1b1c7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C8",
+    "char": "𛇈",
+    "codepoint": "0x1b1c8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1C9",
+    "char": "𛇉",
+    "codepoint": "0x1b1c9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1CA",
+    "char": "𛇊",
+    "codepoint": "0x1b1ca",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1CB",
+    "char": "𛇋",
+    "codepoint": "0x1b1cb",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1CC",
+    "char": "𛇌",
+    "codepoint": "0x1b1cc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1CD",
+    "char": "𛇍",
+    "codepoint": "0x1b1cd",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1CE",
+    "char": "𛇎",
+    "codepoint": "0x1b1ce",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1CF",
+    "char": "𛇏",
+    "codepoint": "0x1b1cf",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D0",
+    "char": "𛇐",
+    "codepoint": "0x1b1d0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D1",
+    "char": "𛇑",
+    "codepoint": "0x1b1d1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D2",
+    "char": "𛇒",
+    "codepoint": "0x1b1d2",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D3",
+    "char": "𛇓",
+    "codepoint": "0x1b1d3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D4",
+    "char": "𛇔",
+    "codepoint": "0x1b1d4",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D5",
+    "char": "𛇕",
+    "codepoint": "0x1b1d5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D6",
+    "char": "𛇖",
+    "codepoint": "0x1b1d6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D7",
+    "char": "𛇗",
+    "codepoint": "0x1b1d7",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D8",
+    "char": "𛇘",
+    "codepoint": "0x1b1d8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1D9",
+    "char": "𛇙",
+    "codepoint": "0x1b1d9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1DA",
+    "char": "𛇚",
+    "codepoint": "0x1b1da",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1DB",
+    "char": "𛇛",
+    "codepoint": "0x1b1db",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1DC",
+    "char": "𛇜",
+    "codepoint": "0x1b1dc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1DD",
+    "char": "𛇝",
+    "codepoint": "0x1b1dd",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1DE",
+    "char": "𛇞",
+    "codepoint": "0x1b1de",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1DF",
+    "char": "𛇟",
+    "codepoint": "0x1b1df",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E0",
+    "char": "𛇠",
+    "codepoint": "0x1b1e0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E1",
+    "char": "𛇡",
+    "codepoint": "0x1b1e1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E2",
+    "char": "𛇢",
+    "codepoint": "0x1b1e2",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E3",
+    "char": "𛇣",
+    "codepoint": "0x1b1e3",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E4",
+    "char": "𛇤",
+    "codepoint": "0x1b1e4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E5",
+    "char": "𛇥",
+    "codepoint": "0x1b1e5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E6",
+    "char": "𛇦",
+    "codepoint": "0x1b1e6",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E7",
+    "char": "𛇧",
+    "codepoint": "0x1b1e7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E8",
+    "char": "𛇨",
+    "codepoint": "0x1b1e8",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1E9",
+    "char": "𛇩",
+    "codepoint": "0x1b1e9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1EA",
+    "char": "𛇪",
+    "codepoint": "0x1b1ea",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1EB",
+    "char": "𛇫",
+    "codepoint": "0x1b1eb",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1EC",
+    "char": "𛇬",
+    "codepoint": "0x1b1ec",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1ED",
+    "char": "𛇭",
+    "codepoint": "0x1b1ed",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1EE",
+    "char": "𛇮",
+    "codepoint": "0x1b1ee",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1EF",
+    "char": "𛇯",
+    "codepoint": "0x1b1ef",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F0",
+    "char": "𛇰",
+    "codepoint": "0x1b1f0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F1",
+    "char": "𛇱",
+    "codepoint": "0x1b1f1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F2",
+    "char": "𛇲",
+    "codepoint": "0x1b1f2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F3",
+    "char": "𛇳",
+    "codepoint": "0x1b1f3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F4",
+    "char": "𛇴",
+    "codepoint": "0x1b1f4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F5",
+    "char": "𛇵",
+    "codepoint": "0x1b1f5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F6",
+    "char": "𛇶",
+    "codepoint": "0x1b1f6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F7",
+    "char": "𛇷",
+    "codepoint": "0x1b1f7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F8",
+    "char": "𛇸",
+    "codepoint": "0x1b1f8",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1F9",
+    "char": "𛇹",
+    "codepoint": "0x1b1f9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1FA",
+    "char": "𛇺",
+    "codepoint": "0x1b1fa",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1FB",
+    "char": "𛇻",
+    "codepoint": "0x1b1fb",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1FC",
+    "char": "𛇼",
+    "codepoint": "0x1b1fc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1FD",
+    "char": "𛇽",
+    "codepoint": "0x1b1fd",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1FE",
+    "char": "𛇾",
+    "codepoint": "0x1b1fe",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B1FF",
+    "char": "𛇿",
+    "codepoint": "0x1b1ff",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B200",
+    "char": "𛈀",
+    "codepoint": "0x1b200",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B201",
+    "char": "𛈁",
+    "codepoint": "0x1b201",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B202",
+    "char": "𛈂",
+    "codepoint": "0x1b202",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B203",
+    "char": "𛈃",
+    "codepoint": "0x1b203",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B204",
+    "char": "𛈄",
+    "codepoint": "0x1b204",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B205",
+    "char": "𛈅",
+    "codepoint": "0x1b205",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B206",
+    "char": "𛈆",
+    "codepoint": "0x1b206",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B207",
+    "char": "𛈇",
+    "codepoint": "0x1b207",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B208",
+    "char": "𛈈",
+    "codepoint": "0x1b208",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B209",
+    "char": "𛈉",
+    "codepoint": "0x1b209",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B20A",
+    "char": "𛈊",
+    "codepoint": "0x1b20a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B20B",
+    "char": "𛈋",
+    "codepoint": "0x1b20b",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B20C",
+    "char": "𛈌",
+    "codepoint": "0x1b20c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B20D",
+    "char": "𛈍",
+    "codepoint": "0x1b20d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B20E",
+    "char": "𛈎",
+    "codepoint": "0x1b20e",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B20F",
+    "char": "𛈏",
+    "codepoint": "0x1b20f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B210",
+    "char": "𛈐",
+    "codepoint": "0x1b210",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B211",
+    "char": "𛈑",
+    "codepoint": "0x1b211",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B212",
+    "char": "𛈒",
+    "codepoint": "0x1b212",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B213",
+    "char": "𛈓",
+    "codepoint": "0x1b213",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B214",
+    "char": "𛈔",
+    "codepoint": "0x1b214",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B215",
+    "char": "𛈕",
+    "codepoint": "0x1b215",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B216",
+    "char": "𛈖",
+    "codepoint": "0x1b216",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B217",
+    "char": "𛈗",
+    "codepoint": "0x1b217",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B218",
+    "char": "𛈘",
+    "codepoint": "0x1b218",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B219",
+    "char": "𛈙",
+    "codepoint": "0x1b219",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B21A",
+    "char": "𛈚",
+    "codepoint": "0x1b21a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B21B",
+    "char": "𛈛",
+    "codepoint": "0x1b21b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B21C",
+    "char": "𛈜",
+    "codepoint": "0x1b21c",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B21D",
+    "char": "𛈝",
+    "codepoint": "0x1b21d",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B21E",
+    "char": "𛈞",
+    "codepoint": "0x1b21e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B21F",
+    "char": "𛈟",
+    "codepoint": "0x1b21f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B220",
+    "char": "𛈠",
+    "codepoint": "0x1b220",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B221",
+    "char": "𛈡",
+    "codepoint": "0x1b221",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B222",
+    "char": "𛈢",
+    "codepoint": "0x1b222",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B223",
+    "char": "𛈣",
+    "codepoint": "0x1b223",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B224",
+    "char": "𛈤",
+    "codepoint": "0x1b224",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B225",
+    "char": "𛈥",
+    "codepoint": "0x1b225",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B226",
+    "char": "𛈦",
+    "codepoint": "0x1b226",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B227",
+    "char": "𛈧",
+    "codepoint": "0x1b227",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B228",
+    "char": "𛈨",
+    "codepoint": "0x1b228",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B229",
+    "char": "𛈩",
+    "codepoint": "0x1b229",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B22A",
+    "char": "𛈪",
+    "codepoint": "0x1b22a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B22B",
+    "char": "𛈫",
+    "codepoint": "0x1b22b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B22C",
+    "char": "𛈬",
+    "codepoint": "0x1b22c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B22D",
+    "char": "𛈭",
+    "codepoint": "0x1b22d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B22E",
+    "char": "𛈮",
+    "codepoint": "0x1b22e",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B22F",
+    "char": "𛈯",
+    "codepoint": "0x1b22f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B230",
+    "char": "𛈰",
+    "codepoint": "0x1b230",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B231",
+    "char": "𛈱",
+    "codepoint": "0x1b231",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B232",
+    "char": "𛈲",
+    "codepoint": "0x1b232",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B233",
+    "char": "𛈳",
+    "codepoint": "0x1b233",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B234",
+    "char": "𛈴",
+    "codepoint": "0x1b234",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B235",
+    "char": "𛈵",
+    "codepoint": "0x1b235",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B236",
+    "char": "𛈶",
+    "codepoint": "0x1b236",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B237",
+    "char": "𛈷",
+    "codepoint": "0x1b237",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B238",
+    "char": "𛈸",
+    "codepoint": "0x1b238",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B239",
+    "char": "𛈹",
+    "codepoint": "0x1b239",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B23A",
+    "char": "𛈺",
+    "codepoint": "0x1b23a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B23B",
+    "char": "𛈻",
+    "codepoint": "0x1b23b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B23C",
+    "char": "𛈼",
+    "codepoint": "0x1b23c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B23D",
+    "char": "𛈽",
+    "codepoint": "0x1b23d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B23E",
+    "char": "𛈾",
+    "codepoint": "0x1b23e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B23F",
+    "char": "𛈿",
+    "codepoint": "0x1b23f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B240",
+    "char": "𛉀",
+    "codepoint": "0x1b240",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B241",
+    "char": "𛉁",
+    "codepoint": "0x1b241",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B242",
+    "char": "𛉂",
+    "codepoint": "0x1b242",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B243",
+    "char": "𛉃",
+    "codepoint": "0x1b243",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B244",
+    "char": "𛉄",
+    "codepoint": "0x1b244",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B245",
+    "char": "𛉅",
+    "codepoint": "0x1b245",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B246",
+    "char": "𛉆",
+    "codepoint": "0x1b246",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B247",
+    "char": "𛉇",
+    "codepoint": "0x1b247",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B248",
+    "char": "𛉈",
+    "codepoint": "0x1b248",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B249",
+    "char": "𛉉",
+    "codepoint": "0x1b249",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B24A",
+    "char": "𛉊",
+    "codepoint": "0x1b24a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B24B",
+    "char": "𛉋",
+    "codepoint": "0x1b24b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B24C",
+    "char": "𛉌",
+    "codepoint": "0x1b24c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B24D",
+    "char": "𛉍",
+    "codepoint": "0x1b24d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B24E",
+    "char": "𛉎",
+    "codepoint": "0x1b24e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B24F",
+    "char": "𛉏",
+    "codepoint": "0x1b24f",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B250",
+    "char": "𛉐",
+    "codepoint": "0x1b250",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B251",
+    "char": "𛉑",
+    "codepoint": "0x1b251",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B252",
+    "char": "𛉒",
+    "codepoint": "0x1b252",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B253",
+    "char": "𛉓",
+    "codepoint": "0x1b253",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B254",
+    "char": "𛉔",
+    "codepoint": "0x1b254",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B255",
+    "char": "𛉕",
+    "codepoint": "0x1b255",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B256",
+    "char": "𛉖",
+    "codepoint": "0x1b256",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B257",
+    "char": "𛉗",
+    "codepoint": "0x1b257",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B258",
+    "char": "𛉘",
+    "codepoint": "0x1b258",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B259",
+    "char": "𛉙",
+    "codepoint": "0x1b259",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B25A",
+    "char": "𛉚",
+    "codepoint": "0x1b25a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B25B",
+    "char": "𛉛",
+    "codepoint": "0x1b25b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B25C",
+    "char": "𛉜",
+    "codepoint": "0x1b25c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B25D",
+    "char": "𛉝",
+    "codepoint": "0x1b25d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B25E",
+    "char": "𛉞",
+    "codepoint": "0x1b25e",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B25F",
+    "char": "𛉟",
+    "codepoint": "0x1b25f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B260",
+    "char": "𛉠",
+    "codepoint": "0x1b260",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B261",
+    "char": "𛉡",
+    "codepoint": "0x1b261",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B262",
+    "char": "𛉢",
+    "codepoint": "0x1b262",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B263",
+    "char": "𛉣",
+    "codepoint": "0x1b263",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B264",
+    "char": "𛉤",
+    "codepoint": "0x1b264",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B265",
+    "char": "𛉥",
+    "codepoint": "0x1b265",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B266",
+    "char": "𛉦",
+    "codepoint": "0x1b266",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B267",
+    "char": "𛉧",
+    "codepoint": "0x1b267",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B268",
+    "char": "𛉨",
+    "codepoint": "0x1b268",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B269",
+    "char": "𛉩",
+    "codepoint": "0x1b269",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B26A",
+    "char": "𛉪",
+    "codepoint": "0x1b26a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B26B",
+    "char": "𛉫",
+    "codepoint": "0x1b26b",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B26C",
+    "char": "𛉬",
+    "codepoint": "0x1b26c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B26D",
+    "char": "𛉭",
+    "codepoint": "0x1b26d",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B26E",
+    "char": "𛉮",
+    "codepoint": "0x1b26e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B26F",
+    "char": "𛉯",
+    "codepoint": "0x1b26f",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B270",
+    "char": "𛉰",
+    "codepoint": "0x1b270",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B271",
+    "char": "𛉱",
+    "codepoint": "0x1b271",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B272",
+    "char": "𛉲",
+    "codepoint": "0x1b272",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B273",
+    "char": "𛉳",
+    "codepoint": "0x1b273",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B274",
+    "char": "𛉴",
+    "codepoint": "0x1b274",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B275",
+    "char": "𛉵",
+    "codepoint": "0x1b275",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B276",
+    "char": "𛉶",
+    "codepoint": "0x1b276",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B277",
+    "char": "𛉷",
+    "codepoint": "0x1b277",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B278",
+    "char": "𛉸",
+    "codepoint": "0x1b278",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B279",
+    "char": "𛉹",
+    "codepoint": "0x1b279",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B27A",
+    "char": "𛉺",
+    "codepoint": "0x1b27a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B27B",
+    "char": "𛉻",
+    "codepoint": "0x1b27b",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B27C",
+    "char": "𛉼",
+    "codepoint": "0x1b27c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B27D",
+    "char": "𛉽",
+    "codepoint": "0x1b27d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B27E",
+    "char": "𛉾",
+    "codepoint": "0x1b27e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B27F",
+    "char": "𛉿",
+    "codepoint": "0x1b27f",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B280",
+    "char": "𛊀",
+    "codepoint": "0x1b280",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B281",
+    "char": "𛊁",
+    "codepoint": "0x1b281",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B282",
+    "char": "𛊂",
+    "codepoint": "0x1b282",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B283",
+    "char": "𛊃",
+    "codepoint": "0x1b283",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B284",
+    "char": "𛊄",
+    "codepoint": "0x1b284",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B285",
+    "char": "𛊅",
+    "codepoint": "0x1b285",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B286",
+    "char": "𛊆",
+    "codepoint": "0x1b286",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B287",
+    "char": "𛊇",
+    "codepoint": "0x1b287",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B288",
+    "char": "𛊈",
+    "codepoint": "0x1b288",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B289",
+    "char": "𛊉",
+    "codepoint": "0x1b289",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B28A",
+    "char": "𛊊",
+    "codepoint": "0x1b28a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B28B",
+    "char": "𛊋",
+    "codepoint": "0x1b28b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B28C",
+    "char": "𛊌",
+    "codepoint": "0x1b28c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B28D",
+    "char": "𛊍",
+    "codepoint": "0x1b28d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B28E",
+    "char": "𛊎",
+    "codepoint": "0x1b28e",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B28F",
+    "char": "𛊏",
+    "codepoint": "0x1b28f",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B290",
+    "char": "𛊐",
+    "codepoint": "0x1b290",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B291",
+    "char": "𛊑",
+    "codepoint": "0x1b291",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B292",
+    "char": "𛊒",
+    "codepoint": "0x1b292",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B293",
+    "char": "𛊓",
+    "codepoint": "0x1b293",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B294",
+    "char": "𛊔",
+    "codepoint": "0x1b294",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B295",
+    "char": "𛊕",
+    "codepoint": "0x1b295",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B296",
+    "char": "𛊖",
+    "codepoint": "0x1b296",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B297",
+    "char": "𛊗",
+    "codepoint": "0x1b297",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B298",
+    "char": "𛊘",
+    "codepoint": "0x1b298",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B299",
+    "char": "𛊙",
+    "codepoint": "0x1b299",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B29A",
+    "char": "𛊚",
+    "codepoint": "0x1b29a",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B29B",
+    "char": "𛊛",
+    "codepoint": "0x1b29b",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B29C",
+    "char": "𛊜",
+    "codepoint": "0x1b29c",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B29D",
+    "char": "𛊝",
+    "codepoint": "0x1b29d",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B29E",
+    "char": "𛊞",
+    "codepoint": "0x1b29e",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B29F",
+    "char": "𛊟",
+    "codepoint": "0x1b29f",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A0",
+    "char": "𛊠",
+    "codepoint": "0x1b2a0",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A1",
+    "char": "𛊡",
+    "codepoint": "0x1b2a1",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A2",
+    "char": "𛊢",
+    "codepoint": "0x1b2a2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A3",
+    "char": "𛊣",
+    "codepoint": "0x1b2a3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A4",
+    "char": "𛊤",
+    "codepoint": "0x1b2a4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A5",
+    "char": "𛊥",
+    "codepoint": "0x1b2a5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A6",
+    "char": "𛊦",
+    "codepoint": "0x1b2a6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A7",
+    "char": "𛊧",
+    "codepoint": "0x1b2a7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A8",
+    "char": "𛊨",
+    "codepoint": "0x1b2a8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2A9",
+    "char": "𛊩",
+    "codepoint": "0x1b2a9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2AA",
+    "char": "𛊪",
+    "codepoint": "0x1b2aa",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2AB",
+    "char": "𛊫",
+    "codepoint": "0x1b2ab",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2AC",
+    "char": "𛊬",
+    "codepoint": "0x1b2ac",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2AD",
+    "char": "𛊭",
+    "codepoint": "0x1b2ad",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2AE",
+    "char": "𛊮",
+    "codepoint": "0x1b2ae",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2AF",
+    "char": "𛊯",
+    "codepoint": "0x1b2af",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B0",
+    "char": "𛊰",
+    "codepoint": "0x1b2b0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B1",
+    "char": "𛊱",
+    "codepoint": "0x1b2b1",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B2",
+    "char": "𛊲",
+    "codepoint": "0x1b2b2",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B3",
+    "char": "𛊳",
+    "codepoint": "0x1b2b3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B4",
+    "char": "𛊴",
+    "codepoint": "0x1b2b4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B5",
+    "char": "𛊵",
+    "codepoint": "0x1b2b5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B6",
+    "char": "𛊶",
+    "codepoint": "0x1b2b6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B7",
+    "char": "𛊷",
+    "codepoint": "0x1b2b7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B8",
+    "char": "𛊸",
+    "codepoint": "0x1b2b8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2B9",
+    "char": "𛊹",
+    "codepoint": "0x1b2b9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2BA",
+    "char": "𛊺",
+    "codepoint": "0x1b2ba",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2BB",
+    "char": "𛊻",
+    "codepoint": "0x1b2bb",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2BC",
+    "char": "𛊼",
+    "codepoint": "0x1b2bc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2BD",
+    "char": "𛊽",
+    "codepoint": "0x1b2bd",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2BE",
+    "char": "𛊾",
+    "codepoint": "0x1b2be",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2BF",
+    "char": "𛊿",
+    "codepoint": "0x1b2bf",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C0",
+    "char": "𛋀",
+    "codepoint": "0x1b2c0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C1",
+    "char": "𛋁",
+    "codepoint": "0x1b2c1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C2",
+    "char": "𛋂",
+    "codepoint": "0x1b2c2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C3",
+    "char": "𛋃",
+    "codepoint": "0x1b2c3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C4",
+    "char": "𛋄",
+    "codepoint": "0x1b2c4",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C5",
+    "char": "𛋅",
+    "codepoint": "0x1b2c5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C6",
+    "char": "𛋆",
+    "codepoint": "0x1b2c6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C7",
+    "char": "𛋇",
+    "codepoint": "0x1b2c7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C8",
+    "char": "𛋈",
+    "codepoint": "0x1b2c8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2C9",
+    "char": "𛋉",
+    "codepoint": "0x1b2c9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2CA",
+    "char": "𛋊",
+    "codepoint": "0x1b2ca",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2CB",
+    "char": "𛋋",
+    "codepoint": "0x1b2cb",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2CC",
+    "char": "𛋌",
+    "codepoint": "0x1b2cc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2CD",
+    "char": "𛋍",
+    "codepoint": "0x1b2cd",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2CE",
+    "char": "𛋎",
+    "codepoint": "0x1b2ce",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2CF",
+    "char": "𛋏",
+    "codepoint": "0x1b2cf",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D0",
+    "char": "𛋐",
+    "codepoint": "0x1b2d0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D1",
+    "char": "𛋑",
+    "codepoint": "0x1b2d1",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D2",
+    "char": "𛋒",
+    "codepoint": "0x1b2d2",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D3",
+    "char": "𛋓",
+    "codepoint": "0x1b2d3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D4",
+    "char": "𛋔",
+    "codepoint": "0x1b2d4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D5",
+    "char": "𛋕",
+    "codepoint": "0x1b2d5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D6",
+    "char": "𛋖",
+    "codepoint": "0x1b2d6",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D7",
+    "char": "𛋗",
+    "codepoint": "0x1b2d7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D8",
+    "char": "𛋘",
+    "codepoint": "0x1b2d8",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2D9",
+    "char": "𛋙",
+    "codepoint": "0x1b2d9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2DA",
+    "char": "𛋚",
+    "codepoint": "0x1b2da",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2DB",
+    "char": "𛋛",
+    "codepoint": "0x1b2db",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2DC",
+    "char": "𛋜",
+    "codepoint": "0x1b2dc",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2DD",
+    "char": "𛋝",
+    "codepoint": "0x1b2dd",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2DE",
+    "char": "𛋞",
+    "codepoint": "0x1b2de",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2DF",
+    "char": "𛋟",
+    "codepoint": "0x1b2df",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E0",
+    "char": "𛋠",
+    "codepoint": "0x1b2e0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E1",
+    "char": "𛋡",
+    "codepoint": "0x1b2e1",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E2",
+    "char": "𛋢",
+    "codepoint": "0x1b2e2",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E3",
+    "char": "𛋣",
+    "codepoint": "0x1b2e3",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E4",
+    "char": "𛋤",
+    "codepoint": "0x1b2e4",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E5",
+    "char": "𛋥",
+    "codepoint": "0x1b2e5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E6",
+    "char": "𛋦",
+    "codepoint": "0x1b2e6",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E7",
+    "char": "𛋧",
+    "codepoint": "0x1b2e7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E8",
+    "char": "𛋨",
+    "codepoint": "0x1b2e8",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2E9",
+    "char": "𛋩",
+    "codepoint": "0x1b2e9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2EA",
+    "char": "𛋪",
+    "codepoint": "0x1b2ea",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2EB",
+    "char": "𛋫",
+    "codepoint": "0x1b2eb",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2EC",
+    "char": "𛋬",
+    "codepoint": "0x1b2ec",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2ED",
+    "char": "𛋭",
+    "codepoint": "0x1b2ed",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2EE",
+    "char": "𛋮",
+    "codepoint": "0x1b2ee",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2EF",
+    "char": "𛋯",
+    "codepoint": "0x1b2ef",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F0",
+    "char": "𛋰",
+    "codepoint": "0x1b2f0",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F1",
+    "char": "𛋱",
+    "codepoint": "0x1b2f1",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F2",
+    "char": "𛋲",
+    "codepoint": "0x1b2f2",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F3",
+    "char": "𛋳",
+    "codepoint": "0x1b2f3",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F4",
+    "char": "𛋴",
+    "codepoint": "0x1b2f4",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F5",
+    "char": "𛋵",
+    "codepoint": "0x1b2f5",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F6",
+    "char": "𛋶",
+    "codepoint": "0x1b2f6",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F7",
+    "char": "𛋷",
+    "codepoint": "0x1b2f7",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F8",
+    "char": "𛋸",
+    "codepoint": "0x1b2f8",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2F9",
+    "char": "𛋹",
+    "codepoint": "0x1b2f9",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2FA",
+    "char": "𛋺",
+    "codepoint": "0x1b2fa",
+    "available": true,
+    "source": "corrections",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2FB",
+    "char": "𛋻",
+    "codepoint": "0x1b2fb",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2FC",
+    "char": "𛋼",
+    "codepoint": "0x1b2fc",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2FD",
+    "char": "𛋽",
+    "codepoint": "0x1b2fd",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2FE",
+    "char": "𛋾",
+    "codepoint": "0x1b2fe",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  },
+  {
+    "unicode_id": "U1B2FF",
+    "char": "𛋿",
+    "codepoint": "0x1b2ff",
+    "available": true,
+    "source": "phase2_train",
+    "n_samples": 1
+  }
+]

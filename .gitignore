@@ -1,9 +1,9 @@
 # Model weights (distribute via GitHub Releases)
 checkpoints/oneshot/oneshot_best.pth
 
-# Generated support set files (run build_support.py to generate)
-server/support_features.pt
-server/support_index.json
+# Generated support set files (included in repo, rebuild with build_support.py if needed)
+# server/support_features.pt
+# server/support_index.json
 
 # User correction data (private, not for distribution)
 corrections/
