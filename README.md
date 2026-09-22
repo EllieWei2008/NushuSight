@@ -15,10 +15,13 @@ NüshuSight 是一款本地运行的女书手写体 OCR 识别工具，支持 Un
 
 ## Table of Contents / 目录
 
+- [Introduction](#介绍）
 - [English Instructions](#english-instructions)
 - [中文使用说明](#中文使用说明)
+  
 
 ---
+
 
 # English Instructions
 
