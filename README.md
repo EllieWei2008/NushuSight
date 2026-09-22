@@ -6,8 +6,8 @@ NüshuSight is a local OCR tool for recognizing handwritten **Nüshu** (女书) 
 
 ---
 
-NüshuSight 是一款本地运行的女书手写体 OCR 识别工具，支持 Unicode 标准收录的全部 396 个女书字符（U+1B170–U+1B2FF）。识别模型基于孪生网络（VGG16主干）+ 一次性混合训练方法构建。
-
+NüshuSight 是一款本地运行的女书手写体 OCR 识别工具，支持 Unicode 标准收录的全部 396 个女书字符（U+1B170–U+1B2FF）。识别模型基于孪生网络（VGG16主干）+ 一次性混合训练方法构建。**手写样本识别率：** Top-1 约 70.8% · Top-5 约 95%
+<img width="604" height="806" alt="Screenshot 2026-09-22 at 13 25 46" src="https://github.com/user-attachments/assets/3c4d8e09-dd27-496f-bb55-95f045f26593" />
 **手写样本识别率：** Top-1 约 70.8% · Top-5 约 95%
 
 ---
