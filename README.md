@@ -1,12 +1,21 @@
 # NüshuSight — Handwritten Nüshu OCR Studio / 女书手写体识别工具
 
+
+Nushu is the world's only written gender language that's preserved. It has accompanied countless women in documenting their lives and emotions, but now it is on the verge of extinction. Due to the lack of real handwritten annotation data, modern AI technology finds it extremely difficult to digitize these precious documents. This project is an AI rescue plan initiated by me as a high school student: through synthetic data generation, FFD data augmentation and transfer learning, an OCR model capable of recognizing real handwritten documents of Nushu is established, hoping to leave a digital mark on this precious intangible cultural heritage with technology.
+
 NüshuSight is a local OCR tool for recognizing handwritten **Nüshu** (女书) characters — the world's only known female-exclusive writing system. It uses a Siamese Network (VGG16 backbone) trained with one-shot mixed learning, supporting all 396 Unicode Nüshu characters (U+1B170–U+1B2FF).
 
 **Accuracy on handwritten samples:** Top-1 ~70.8% · Top-5 ~95%
 
 ---
 
-NüshuSight 是一款本地运行的女书手写体 OCR 识别工具，支持 Unicode 标准收录的全部 396 个女书字符（U+1B170–U+1B2FF）。识别模型基于孪生网络（VGG16主干）+ 一次性混合训练方法构建。**手写样本识别率：** Top-1 约 70.8% · Top-5 约 95%
+女书是世界上唯一的女性专用文字，曾陪伴无数女性记录她们的生活与情感，如今却面临濒危。由于真实手写标注数据的缺失，现代 AI 技术极难对这些珍贵文献进行数字化。
+本项目是我作为一名高中生发起的 AI 拯救计划：通过合成数据生成、FFD 数据增强与迁移学习，建立起能够识别真实女书手写文献的 OCR 模型，希望能用技术为这项珍贵的非物质文化遗产留下数字印记。
+
+NüshuSight 是一款本地运行的女书手写体 OCR 识别工具，支持 Unicode 标准收录的全部 396 个女书字符（U+1B170–U+1B2FF）。识别模型基于孪生网络（VGG16主干）+ 一次性混合训练方法构建。
+**手写样本识别率：** Top-1 约 70.8% · Top-5 约 95%
+
+
 <img width="604" height="806" alt="Screenshot 2026-09-22 at 13 25 46" src="https://github.com/user-attachments/assets/3c4d8e09-dd27-496f-bb55-95f045f26593" />
 <img width="1410" height="377" alt="Screenshot 2026-09-22 at 13 25 19" src="https://github.com/user-attachments/assets/7ca38323-dc01-4b3d-a6dc-1cb8b69e2848" />
 
@@ -15,7 +24,6 @@ NüshuSight 是一款本地运行的女书手写体 OCR 识别工具，支持 Un
 
 ## Table of Contents / 目录
 
-- [Introduction](#介绍）
 - [English Instructions](#english-instructions)
 - [中文使用说明](#中文使用说明)
   
